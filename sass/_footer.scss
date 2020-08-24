@@ -1,1 +1,42 @@
+footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: $white;
+	margin: 3rem 0 1rem 0;
+	text-align: center;
 
+	body.dark-mode-colors & {
+		background-color: $medium-grey;
+	}
+
+	.social {
+		display: flex;
+		justify-content: center;
+		flex-flow: column wrap;
+	}
+
+	.social .social-icons {
+		padding: 1rem 0 2rem 0;
+		a {
+			color: $light-grey;
+			font-size: 1.125rem;
+			margin-left: 1.25rem;
+			margin: 0 0.5rem;
+			-webkit-transition: 0.45s;
+			transition: 0.45s;
+			&:hover {
+				color: $violet;
+			}
+		}
+	}
+
+	.social a:first-child {
+		margin-left: 0;
+		padding-left: 0;
+	}
+	.social a:last-child {
+		margin-right: 0;
+		padding-right: 0;
+	}
+}

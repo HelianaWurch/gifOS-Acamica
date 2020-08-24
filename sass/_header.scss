@@ -1,0 +1,149 @@
+header {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	background-color: $white;
+	body.dark-mode-colors & {
+		background: $medium-grey;
+	}
+
+	nav {
+		display: flex;
+		justify-content: space-between;
+
+		ul {
+			background: $violet;
+			width: 100%;
+			position: absolute;
+			top: 5.2rem;
+			right: 0;
+			overflow: hidden;
+			list-style: none;
+			height: 0;
+			opacity: 90%;
+			body.dark-mode-colors & {
+				background: $black;
+				opacity: 100%;
+			}
+
+			hr {
+				background-color: $white;
+				height: 1px;
+				width: 12%;
+			}
+
+			li {
+				position: relative;
+				text-align: center;
+				list-style: none;
+
+				a {
+					font-family: $font-family-montserrat;
+					font-size: $font-size-fitn;
+					font-weight: 700;
+					color: $white;
+					line-height: 28px;
+					position: relative;
+					padding: 0.5rem 1rem;
+					display: block;
+					&:hover {
+						text-decoration: underline;
+						text-decoration-color: $cyan;
+						text-decoration-thickness: 0.2rem;
+						text-underline-offset: 0.5rem;
+						-moz-text-decoration-color: $cyan;
+					}
+					&:active {
+						color: rgba(6, 10, 36, 0.56);
+					}
+				}
+			}
+			li:first-child {
+				margin-top: 2rem;
+			}
+		}
+
+		.nav-logo {
+			width: 48px;
+		}
+
+		.nav-box-one {
+			background-color: $white;
+			padding: 29px 22px 22px 22px;
+			body.dark-mode-colors & {
+				background: $medium-grey;
+			}
+		}
+
+		.nav-box-two {
+			padding: 47px 22px 34px 0;
+
+			/*CHECKBOX*/
+
+			input[type="checkbox"]:checked ~ ul {
+				min-height: 100vh;
+			}
+
+			input {
+				display: block;
+				top: 32px;
+				right: 9px;
+				height: 40px;
+				width: 40px;
+				opacity: 0;
+				z-index: 2;
+				position: absolute;
+			}
+
+			/*LINEAS DE MENU HAMBURGUESA*/
+
+			span {
+				display: block;
+				width: 20px;
+				height: 2px;
+				margin-bottom: 4.5px;
+				background: $violet;
+				z-index: 1;
+				transform-origin: 3px 0px;
+				body.dark-mode-colors & {
+					background: $white;
+				}
+			}
+
+			span:first-child {
+				transform-origin: 0% 0%;
+			}
+
+			span:nth-last-child(2) {
+				transform-origin: 0% 100%;
+			}
+		}
+		/*ANIMACIÓN DE LA CRUZ*/
+
+		input:checked ~ span {
+			opacity: 1;
+			transform: rotate(45deg) translate(1px, 0px);
+			-webkit-transform: rotate(45deg) translate(1px, 0px);
+			-moz-transform: rotate(45deg) translate(1px, 0px);
+			-ms-transform: rotate(45deg) translate(1px, 0px);
+			-o-transform: rotate(45deg) translate(1px, 0px);
+		}
+
+		input:checked ~ span:nth-last-child(3) {
+			opacity: 0;
+			transform: rotate(0deg) scale(0.2, 0.2);
+			-webkit-transform: rotate(0deg) scale(0.2, 0.2);
+			-moz-transform: rotate(0deg) scale(0.2, 0.2);
+			-ms-transform: rotate(0deg) scale(0.2, 0.2);
+			-o-transform: rotate(0deg) scale(0.2, 0.2);
+		}
+
+		input:checked ~ span:nth-last-child(2) {
+			transform: rotate(-45deg) translate(1px, 0px);
+			-webkit-transform: rotate(-45deg) translate(1px, 0px);
+			-moz-transform: rotate(-45deg) translate(1px, 0px);
+			-ms-transform: rotate(-45deg) translate(1px, 0px);
+			-o-transform: rotate(-45deg) translate(1px, 0px);
+		}
+	}
+}

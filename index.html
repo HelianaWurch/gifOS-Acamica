@@ -3,11 +3,100 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<!--Estilos y librerias-->
 		<link rel="stylesheet" type="text/css" href="./css/styles.css" />
-		<script type="text/javascript" src="./js/javascript.js"></script>
-		<title>Document</title>
+		<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+
+		<link rel="shortcut icon" href="./assets/logo-desktop-modo-noc.svg" />
+		<title>GIFOS</title>
 	</head>
+
 	<body>
-		<h1>HOLA</h1>
+		<!--Header - Nav-->
+		<header>
+			<nav>
+				<div class="nav-box-one">
+					<a href="./index.html"><img class="nav-logo" src="./assets/logo-desktop.svg" alt="logo" /></a>
+				</div>
+				<div class="nav-box-two">
+					<input type="checkbox" id="checkbox" />
+					<label for="checkbox"></label>
+					<span></span>
+					<span></span>
+					<span></span>
+					<ul id="nav-ul">
+						<li><a id="nocturno" href="#" onclick="darkMode()">Modo Nocturno</a></li>
+						<li><hr /></li>
+						<li><a href="#favoritos">Favoritos</a></li>
+						<li><hr /></li>
+						<li><a href="#misgifos">Mis GIFOS</a></li>
+						<li><hr /></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+
+		<!--Search-->
+		<section id="search-section">
+			<h1>Inspírate, busca, guarda, y crea los mejores <span class="color-title">GIFOS</span></h1>
+			<img id="search-img" src="./assets/ilustra_header.svg" alt="Welcome Search" />
+
+			<form class="navbar-form navbar-left" role="search">
+				<div class="inner-addon right-addon">
+					<!-- <img class="fa-search" src="./assets/icon-search.svg" /> -->
+					<svg
+						class="fa-search"
+						width="20"
+						height="20"
+						xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink"
+					>
+						<defs>
+							<path
+								d="M8.5 0a8.5 8.5 0 016.677 13.761l4.53 4.532a1 1 0 01-1.414 1.414l-4.532-4.53A8.5 8.5 0 118.5 0zm0 2a6.5 6.5 0 104.548 11.144l.045-.051c.016-.016.033-.032.05-.046A6.5 6.5 0 008.5 2z"
+								id="a"
+							/>
+						</defs>
+						<use fill-rule="nonzero" xlink:href="#a" />
+					</svg>
+					<input type="text" class="form-control" placeholder="Busca GIFOS y más" />
+				</div>
+			</form>
+			<h4>Trending:</h4>
+			<p>Reactions, Entertainment, Sports, Stickers, Artists</p>
+		</section>
+
+		<!--Trending GIFOS-->
+		<section id="trending-gifos">
+			<h2>Trending GIFOS:</h2>
+			<p>
+				Mira los últimos <br />
+				GIFOS de nuestra comunidad.
+			</p>
+		</section>
+
+		<footer>
+			<div class="social">
+				<div>
+					<p>Compartir en:</p>
+				</div>
+				<div class="social-icons">
+					<a href="https://www.facebook.com" target="_blank">
+						<i class="fab fa-facebook-f"></i>
+					</a>
+					<a href="https://twitter.com" target="_blank">
+						<i class="fab fa-twitter"></i>
+					</a>
+					<a href="https://instagram.com" target="_blank">
+						<i class="fab fa-instagram"></i>
+					</a>
+				</div>
+			</div>
+			<div>
+				<p>© GIFOS 2020 All Rights Reserved.</p>
+			</div>
+		</footer>
+		<script src="./js/main.js"></script>
 	</body>
 </html>

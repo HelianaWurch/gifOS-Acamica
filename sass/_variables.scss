@@ -1,0 +1,55 @@
+/*------------------------------------------Variables---------------------------------------------*/
+/* Colors */
+$white: #fff;
+$black: #000;
+$light-grey: #9cafc3;
+$medium-grey: #37383c;
+$dark-grey: #222326;
+$cyan: #50e3c2;
+$violet: #572ee5;
+
+/* Fonts */
+$font-family-montserrat: "Montserrat", sans-serif;
+$font-family-roboto: "Roboto", sans-serif;
+
+$font-size-thtn: 0.813rem;
+$font-size-frtn: 0.875rem;
+$font-size-fitn: 0.938rem;
+$font-size-sxtn: 1rem;
+$font-size-ettn: 1.125rem;
+$font-size-twty: 1.25rem;
+$font-size-twtw: 1.375rem;
+$font-size-twfv: 1.563rem;
+$font-size-thty: 1.875rem;
+$font-size-ttfv: 2.188rem;
+
+/*------------------------------------------Extends-----------------------------------------------*/
+
+/*------------------------------------------Mixins------------------------------------------------*/
+
+@mixin border-radius($radio) {
+	border-radius: $radio;
+	-webkit-border-radius: $radio;
+	-moz-border-radius: $radio;
+	-ms-border-radius: $radio;
+	-o-border-radius: $radio;
+}
+// @include border-radius(50px); - el valor es un ejemplo
+
+@mixin transition($transition-time) {
+	transition: $transition-time;
+	-webkit-transition: $transition-time;
+	-moz-transition: $transition-time;
+	-ms-transition: $transition-time;
+	-o-transition: $transition-time;
+}
+// @include transition(0.45s); - el valor es un ejemplo
+
+@mixin transform($transform-valor) {
+	transform: $transform-valor;
+	-webkit-transform: $transform-valor;
+	-moz-transform: $transform-valor;
+	-ms-transform: $transform-valor;
+	-o-transform: $transform-valor;
+}
+// @include transform(scale(1.05)); - el valor es un ejemplo
