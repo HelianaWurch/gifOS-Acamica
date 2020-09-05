@@ -27,11 +27,17 @@
 					<span></span>
 					<ul id="nav-ul">
 						<li><a id="nocturno" href="#" onclick="darkMode()">Modo Nocturno</a></li>
-						<li><hr /></li>
+						<li>
+							<hr />
+						</li>
 						<li><a href="#favoritos">Favoritos</a></li>
-						<li><hr /></li>
+						<li>
+							<hr />
+						</li>
 						<li><a href="#misgifos">Mis GIFOS</a></li>
-						<li><hr /></li>
+						<li>
+							<hr />
+						</li>
 					</ul>
 				</div>
 			</nav>
@@ -42,13 +48,11 @@
 			<h1>Inspírate, busca, guarda, y crea los mejores <span class="color-title">GIFOS</span></h1>
 			<img id="search-img" src="./assets/ilustra_header.svg" alt="Welcome Search" />
 
-			<form class="navbar-form navbar-left" role="search">
+			<form role="search">
 				<div class="inner-addon right-addon">
-					<!-- <img class="fa-search" src="./assets/icon-search.svg" /> -->
+					<button id="button-search" type="submit"></button>
 					<svg
 						class="fa-search"
-						width="20"
-						height="20"
 						xmlns="http://www.w3.org/2000/svg"
 						xmlns:xlink="http://www.w3.org/1999/xlink"
 					>
@@ -60,11 +64,17 @@
 						</defs>
 						<use fill-rule="nonzero" xlink:href="#a" />
 					</svg>
-					<input type="text" class="form-control" placeholder="Busca GIFOS y más" />
+					<label for="input-text"></label>
+					<input id="input-text" type="text" class="form-control" placeholder="Busca GIFOS y más" />
 				</div>
 			</form>
 			<h4>Trending:</h4>
 			<p>Reactions, Entertainment, Sports, Stickers, Artists</p>
+		</section>
+
+		<!-- Resultado de busqueda -->
+		<section>
+			<div id="cards-container"></div>
 		</section>
 
 		<!--Trending GIFOS-->
@@ -76,7 +86,26 @@
 			</p>
 		</section>
 
-		<footer>
+		<!--Carousel-->
+		<section>
+			<div class="container">
+				<button class="btn left-btn"><img src="./assets/button-left.svg" alt="" /></button>
+				<div class="carousel-container">
+					<ul class="carousel">
+						<li class="card-hover slide active">
+							<img src="./ejempling/01.jpg" alt="" />
+						</li>
+						<li class="card-hover slide"><img src="./ejempling/02.jpg" alt="" /></li>
+						<li class="card-hover slide"><img src="./ejempling/03.jpg" alt="" /></li>
+						<li class="card-hover slide"><img src="./ejempling/05.jpg" alt="" /></li>
+					</ul>
+				</div>
+				<button class="btn right-btn"><img src="./assets/button-right.svg" alt="" /></button>
+			</div>
+		</section>
+
+		<!--Footer-->
+		<footer id="footer">
 			<div class="social">
 				<div>
 					<p>Compartir en:</p>
@@ -97,6 +126,10 @@
 				<p>© GIFOS 2020 All Rights Reserved.</p>
 			</div>
 		</footer>
+		<script src="./js/apiConect.js"></script>
+
+		<script src="./js/carousel.js"></script>
 		<script src="./js/main.js"></script>
+		<!-- <script src="./js/async.js"></script> -->
 	</body>
 </html>

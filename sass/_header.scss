@@ -34,7 +34,9 @@ header {
 
 			li {
 				position: relative;
+				display: flex;
 				text-align: center;
+				justify-content: center;
 				list-style: none;
 
 				a {
@@ -42,16 +44,13 @@ header {
 					font-size: $font-size-fitn;
 					font-weight: 700;
 					color: $white;
-					line-height: 28px;
 					position: relative;
-					padding: 0.5rem 1rem;
+					padding: 0.5rem 0rem;
 					display: block;
+					text-decoration: none;
 					&:hover {
-						text-decoration: underline;
-						text-decoration-color: $cyan;
-						text-decoration-thickness: 0.2rem;
-						text-underline-offset: 0.5rem;
-						-moz-text-decoration-color: $cyan;
+						border-bottom: 0.2rem solid $cyan;
+						padding-bottom: 0.2rem;
 					}
 					&:active {
 						color: rgba(6, 10, 36, 0.56);

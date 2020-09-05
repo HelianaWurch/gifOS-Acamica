@@ -1,0 +1,83 @@
+// body {
+// 	display: flex;
+// 	flex-flow: row nowrap;
+// 	justify-content: center;
+// 	align-items: center;
+// 	padding: 10rem;
+// }
+
+#cards-container {
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+.gif-card {
+	width: 357px;
+	height: 275px;
+	position: relative;
+}
+
+.gif-card:hover {
+	background-color: $violet;
+	cursor: pointer;
+	.gif-buttons-container,
+	.gif-username,
+	.gif-title {
+		opacity: 100%;
+	}
+	.gif-giphy {
+		opacity: 50%;
+	}
+}
+
+.gif-giphy {
+	padding: 0;
+	margin: 0;
+	width: 357px;
+	height: 275px;
+	object-fit: cover;
+}
+
+.gif-buttons-container {
+	top: 0.5rem;
+	right: 0.5rem;
+	display: inline-flex;
+	position: absolute;
+	opacity: 0%;
+}
+
+.img-btn {
+	width: 32px;
+	height: 32px;
+	margin: 0.2rem;
+	border: 1px solid $violet;
+	cursor: pointer;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+}
+
+.gif-username {
+	font-family: $font-family-roboto;
+	font-size: $font-size-fitn;
+	position: absolute;
+	text-align: left;
+	bottom: 70px;
+	left: -45px;
+	color: $white;
+	opacity: 0;
+}
+
+.gif-title {
+	font-family: $font-family-roboto;
+	font-size: $font-size-sxtn;
+	font-weight: 700;
+	position: absolute;
+	text-align: left;
+	bottom: 20px;
+	left: -45px;
+	color: $white;
+	opacity: 0;
+}
