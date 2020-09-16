@@ -50,7 +50,7 @@
 
 			<form role="search">
 				<div class="inner-addon right-addon">
-					<button id="button-search" type="submit"></button>
+					<button id="button-search" type="button"></button>
 					<svg
 						class="fa-search"
 						xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@
 
 		<!-- Resultado de busqueda -->
 		<section>
-			<div id="cards-container"></div>
+			<div id="search-results-container"></div>
 		</section>
 
 		<!--Trending GIFOS-->
@@ -84,24 +84,6 @@
 				Mira los últimos <br />
 				GIFOS de nuestra comunidad.
 			</p>
-		</section>
-
-		<!--Carousel-->
-		<section>
-			<div class="container">
-				<button class="btn left-btn"><img src="./assets/button-left.svg" alt="" /></button>
-				<div class="carousel-container">
-					<ul class="carousel">
-						<li class="card-hover slide active">
-							<img src="./ejempling/01.jpg" alt="" />
-						</li>
-						<li class="card-hover slide"><img src="./ejempling/02.jpg" alt="" /></li>
-						<li class="card-hover slide"><img src="./ejempling/03.jpg" alt="" /></li>
-						<li class="card-hover slide"><img src="./ejempling/05.jpg" alt="" /></li>
-					</ul>
-				</div>
-				<button class="btn right-btn"><img src="./assets/button-right.svg" alt="" /></button>
-			</div>
 		</section>
 
 		<!--Footer-->
@@ -126,8 +108,43 @@
 				<p>© GIFOS 2020 All Rights Reserved.</p>
 			</div>
 		</footer>
-		<script src="./js/apiConect.js"></script>
 
+		<!--Modal-->
+		<div id="modal" class="modal-pause">
+			<div class="modal-content">
+				<div id="modal-container">
+					<div class="gif-max-modal">
+						<div class="close">
+							<button class="img-btn close-btn">
+								<img src="./assets/button-close.svg" alt="button close" />
+							</button>
+						</div>
+
+						<div class="left">
+							<button class="btn left-btn"><img src="./assets/button-left.svg" alt="" /></button>
+						</div>
+
+						<div class="gif-image"><img class="gif-giphy" src="ejempling/03.jpg" /></div>
+						<div class="right">
+							<button class="btn right-btn"><img src="./assets/button-right.svg" alt="" /></button>
+						</div>
+						<div class="gif-info">
+							<p class="gif-username">User</p>
+							<p class="gif-title">Título GIFO</p>
+						</div>
+						<div class="gif-buttons">
+							<button class="img-btn favourite-btn">
+								<img src="./assets/icon-fav-hover.svg" alt="" />
+							</button>
+							<button class="img-btn download-btn"><img src="./assets/icon-download.svg" alt="" /></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="./js/modal.js"></script>
+		<script src="./js/apiConect.js"></script>
 		<script src="./js/carousel.js"></script>
 		<script src="./js/main.js"></script>
 		<!-- <script src="./js/async.js"></script> -->

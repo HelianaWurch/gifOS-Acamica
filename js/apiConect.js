@@ -8,7 +8,8 @@ const apiTrending = `${api}trending?&api_key=${apiKey}&limit=25&rating=g`;
 /*----------------Cache DOM-----------------------------------------------------------------------*/
 const userInput = document.querySelector("#input-text"); // Detecta el input.
 const search = document.querySelector("#button-search"); // Detecta el boton.
-const searchKeyWord = userInput.value; // Toma lo que escribio el usuario en el input.
+const searchResults = document.getElementById("search-results-container");
+
 /*-----------------Fetchs-------------------------------------------------------------------------*/
 
 async function apiSearchCall(searchKeyword) {
@@ -17,14 +18,11 @@ async function apiSearchCall(searchKeyword) {
 	return jsonResponse;
 }
 
-function doStuffWithImage(url, title, user) {
-	gifConstructor(url, title, user);
-}
-
 function giphySearch(searchKeyword) {
-	apiSearchCall()
+	apiSearchCall(searchKeyword)
 		.then((jsonData) => {
 			console.log(jsonData);
+			searchResults.innerHTML = "";
 			forGif(jsonData.data);
 		})
 		.catch((error) => {
@@ -32,8 +30,12 @@ function giphySearch(searchKeyword) {
 		});
 }
 
+function doStuffWithImage(url, title, user) {
+	gifConstructor(url, title, user);
+}
+
 const forGif = (url) => {
-	for (let i = 0; i < 5; i++) {
+	for (let i = 0; i < 12; i++) {
 		const gifUrl = url[i].images.original.url;
 		const gifTitle = url[i].title;
 		const gifUser = url[i].username;
@@ -41,6 +43,28 @@ const forGif = (url) => {
 		console.log(gifUser);
 		console.log(gifTitle);
 	}
+};
+
+/*-----------------Search-------------------------------------------------------------------------*/
+
+let searchResult = () => {
+	giphySearch(userInput.value); // Toma lo que escribio el usuario en el input.
+};
+
+search.addEventListener("click", searchResult); // Detecta el click en el boton y ejecuta la función contenedora.
+userInput.addEventListener("keyup", function (event) {
+	// Hace click en el botón cuando se apreta enter en el userInput
+	event.preventDefault();
+	// Enter
+	if (event.keyCode === 13) {
+		search.click();
+	}
+});
+
+/*---------------Trending-------------------------------------------------------------------------*/
+
+let trendingGifs = () => {
+	setup(apiTrending);
 };
 
 // let setup = (path, input) => {
@@ -70,20 +94,6 @@ const forGif = (url) => {
 // 			});
 // 	}
 // };
-
-/*-----------------Search-------------------------------------------------------------------------*/
-
-let result = (searchKeyWord) => {
-	giphySearch();
-};
-
-search.addEventListener("click", result); // Detecta el click en el boton y ejecuta la función contenedora.
-
-/*---------------Trending-------------------------------------------------------------------------*/
-
-let trendingGifs = () => {
-	setup(apiTrending);
-};
 
 /*------------Gif Constructor---------------------------------------------------------------------*/
 
@@ -149,6 +159,6 @@ let gifConstructor = (src, title, user) => {
 	gifCard.appendChild(gifUserP);
 	gifCard.appendChild(gifTitleP);
 
-	let gifCardContainer = document.getElementById("cards-container"); //Asignamos el elemento contenedor general.
-	gifCardContainer.appendChild(gifCard); //Le asignamos los gifs creados como hijos.
+	//Asignamos el elemento contenedor general.
+	searchResults.appendChild(gifCard); //Le asignamos los gifs creados como hijos.
 };

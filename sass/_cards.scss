@@ -1,41 +1,18 @@
-// body {
-// 	display: flex;
-// 	flex-flow: row nowrap;
-// 	justify-content: center;
-// 	align-items: center;
-// 	padding: 10rem;
-// }
-
-#cards-container {
-	display: flex;
-	flex-flow: row nowrap;
+#search-results-container {
+	padding: 0 1rem;
+	max-height: 50rem;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(6, 1fr);
+	grid-gap: 1rem;
+	justify-items: center;
 }
 
+.gif-giphy,
 .gif-card {
-	width: 357px;
-	height: 275px;
+	width: 156px;
+	height: 120px;
 	position: relative;
-}
-
-.gif-card:hover {
-	background-color: $violet;
-	cursor: pointer;
-	.gif-buttons-container,
-	.gif-username,
-	.gif-title {
-		opacity: 100%;
-	}
-	.gif-giphy {
-		opacity: 50%;
-	}
-}
-
-.gif-giphy {
-	padding: 0;
-	margin: 0;
-	width: 357px;
-	height: 275px;
-	object-fit: cover;
 }
 
 .gif-buttons-container {
@@ -53,6 +30,7 @@
 	border: 1px solid $violet;
 	cursor: pointer;
 	border-radius: 6px;
+	background-color: $white;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	-ms-border-radius: 6px;

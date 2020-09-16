@@ -1,5 +1,83 @@
-@media screen and (min-width: 1440px) {
-	/* NAV */
+@media screen and (min-width: 768px) {
+	/*------------------Carousel--------------------------------------------------------------------*/
+
+	.right-btn {
+		visibility: visible;
+	}
+
+	.left-btn {
+		visibility: visible;
+		position: relative;
+		top: 50%;
+		left: 15%;
+	}
+
+	/*------------------Cards-----------------------------------------------------------------------*/
+
+	.gif-card:hover {
+		background-color: $violet;
+		cursor: pointer;
+		.gif-buttons-container,
+		.gif-username,
+		.gif-title {
+			opacity: 100%;
+		}
+		.gif-giphy {
+			opacity: 50%;
+		}
+	}
+
+	/*------------------Search----------------------------------------------------------------------*/
+	section {
+		#search-results-container {
+			margin: 2rem;
+			max-height: 50rem;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(3, 1fr);
+
+			.gif-giphy,
+			.gif-card {
+				width: 230px;
+				height: 174px;
+			}
+		}
+	}
+
+	/*--------------Containers borde blanco Carousel------------------------------------------------*/
+
+	// .container .white-bg-one {
+	// 	visibility: visible;
+	// 	background-color: $white;
+	// 	position: absolute;
+	// 	top: 0rem;
+	// 	left: 0rem;
+	// 	height: 20rem;
+	// 	width: 10rem;
+	// 	z-index: 1;
+	// 	body.dark-mode-colors & {
+	// 		background-color: $medium-grey;
+	// 	}
+	// }
+
+	// .container .white-bg-two {
+	// 	visibility: visible;
+	// 	background-color: $white;
+	// 	position: absolute;
+	// 	top: 0rem;
+	// 	right: 0rem;
+	// 	height: 20rem;
+	// 	width: 10rem;
+	// 	z-index: 1;
+	// 	body.dark-mode-colors & {
+	// 		background-color: $medium-grey;
+	// 	}
+	// }
+}
+
+@media screen and (min-width: 1400px) {
+	/*------------------Nav-------------------------------------------------------------------------*/
+
 	header {
 		padding: 0 9.75rem;
 		nav {
@@ -52,7 +130,7 @@
 		}
 	}
 
-	/* BODY */
+	/*---------------Body General-------------------------------------------------------------------*/
 
 	h1 {
 		font-size: $font-size-foty;
@@ -76,6 +154,34 @@
 		}
 	}
 
+	/*------------------Cards-----------------------------------------------------------------------*/
+
+	.gif-card:hover {
+		background-color: $violet;
+		cursor: pointer;
+		.gif-buttons-container,
+		.gif-username,
+		.gif-title {
+			opacity: 100%;
+		}
+		.gif-giphy {
+			opacity: 50%;
+		}
+	}
+
+	/*------------------Search----------------------------------------------------------------------*/
+	section {
+		#search-results-container {
+			margin: 0 12rem;
+			display: grid;
+			grid-template-columns: repeat(4, 2fr);
+			grid-template-rows: repeat(3, 1fr);
+			grid-gap: 2rem;
+		}
+	}
+
+	/*-----------------Trending---------------------------------------------------------------------*/
+
 	#trending-gifos {
 		br {
 			display: none;
@@ -85,7 +191,7 @@
 		}
 	}
 
-	/*FOOTER*/
+	/*------------------Footer----------------------------------------------------------------------*/
 
 	footer {
 		flex-direction: row;
@@ -95,6 +201,43 @@
 			flex-direction: row;
 			p {
 				margin-right: 1.5rem;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1700px) {
+	/*------------------Carousel--------------------------------------------------------------------*/
+
+	.carousel {
+	}
+
+	.carousel .gif-giphy {
+		max-width: 357px;
+		height: 275px;
+	}
+
+	/*------------------Search----------------------------------------------------------------------*/
+
+	section {
+		#search-results-container {
+			margin: 0 10%;
+			display: grid;
+			grid-template-columns: repeat(4, 2fr);
+			grid-template-rows: repeat(3, 2fr);
+			grid-gap: 1rem;
+
+			.gif-card {
+				width: 320px;
+				height: 242px;
+			}
+
+			.gif-giphy {
+				padding: 0;
+				margin: 0;
+				width: 320px;
+				height: 242px;
+				object-fit: cover;
 			}
 		}
 	}

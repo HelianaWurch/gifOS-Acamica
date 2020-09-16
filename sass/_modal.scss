@@ -1,0 +1,144 @@
+.modal-pause {
+	z-index: 10;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $black;
+	transform: scale(0);
+	-webkit-transform: scale(0);
+	-moz-transform: scale(0);
+	-ms-transform: scale(0);
+	-o-transform: scale(0);
+	transition: transform 0.3s;
+	-webkit-transition: transform 0.3s;
+	-moz-transition: transform 0.3s;
+	-ms-transition: transform 0.3s;
+	-o-transition: transform 0.3s;
+
+	.modal-content {
+		background-color: $white;
+		width: 100vw;
+		height: 100vh;
+		padding: 3rem;
+	}
+}
+
+.modal-active {
+	transform: scale(1);
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	-o-transform: scale(1);
+}
+
+#modal-container {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	margin-top: 8%;
+}
+
+.gif-max-modal {
+	width: 100%;
+	max-width: 1000px;
+	height: 600px;
+	text-align: center;
+	font-size: 20px;
+	display: grid;
+	grid-template-columns: repeat(1, 2fr 6fr 6fr 2fr);
+	grid-template-rows: repeat(3, 1fr 8fr 2fr);
+	grid-gap: 20px;
+	grid-template-areas:
+		"close close close close"
+		"left picture picture right"
+		"left info buttons right";
+
+	div {
+		display: block;
+	}
+
+	.gif-image {
+		grid-column-start: picture;
+		grid-column-end: picture;
+		display: flex;
+		justify-content: center;
+	}
+
+	.close {
+		grid-column-start: close;
+		grid-column-end: close;
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 1rem;
+		height: 5rem;
+	}
+
+	.left {
+		grid-column-start: left;
+		grid-column-end: left;
+		grid-row-start: left;
+		grid-row-end: left;
+		display: flex;
+		align-items: center;
+		flex-direction: row-reverse;
+	}
+
+	.right {
+		grid-column-start: right;
+		grid-column-end: right;
+		grid-row-start: right;
+		grid-row-end: right;
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+	}
+
+	.gif-info {
+		grid-column-start: info;
+		grid-column-end: info;
+
+		.gif-title {
+			color: $black;
+			position: unset;
+			opacity: 100%;
+		}
+
+		.gif-username {
+			color: $black;
+			position: unset;
+			opacity: 100%;
+			line-height: 0;
+		}
+	}
+
+	.gif-buttons {
+		grid-column-start: buttons;
+		grid-column-end: buttons;
+
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.gif-giphy {
+		padding: 0;
+		margin: 0;
+
+		width: 100%;
+		height: 400px;
+		object-fit: cover;
+	}
+
+	.btn {
+		position: unset;
+		background: $white;
+	}
+}
+.close-btn {
+	border: none;
+	background-color: transparent;
+}

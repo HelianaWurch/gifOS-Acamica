@@ -118,13 +118,14 @@ section {
 
 	#button-search {
 		position: absolute;
-		left: 17.5rem;
+		left: 15rem;
 		top: 0.5rem;
 		width: 2rem;
 		height: 2rem;
 		overflow: hidden;
 		opacity: 0%;
 		cursor: pointer;
+		z-index: 2;
 	}
 
 	.inner-addon .fa-search {
@@ -161,4 +162,12 @@ section {
 
 .color-title {
 	color: $cyan;
+}
+
+.left-btn {
+	visibility: hidden;
+}
+
+.right-btn {
+	visibility: hidden;
 }

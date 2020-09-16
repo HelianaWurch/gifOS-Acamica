@@ -5,5 +5,12 @@
 @import "_medias";
 @import "_cards";
 @import "_carousel";
+@import "_modal";
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;700;900&display=swap");
+
+.disp-flex-center {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
