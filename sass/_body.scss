@@ -119,9 +119,9 @@ section {
 	#button-search {
 		position: absolute;
 		left: 15rem;
-		top: 0.5rem;
-		width: 2rem;
-		height: 2rem;
+		top: 0.2rem;
+		width: 3rem;
+		height: 3rem;
 		overflow: hidden;
 		opacity: 0%;
 		cursor: pointer;
@@ -162,12 +162,4 @@ section {
 
 .color-title {
 	color: $cyan;
-}
-
-.left-btn {
-	visibility: hidden;
-}
-
-.right-btn {
-	visibility: hidden;
 }

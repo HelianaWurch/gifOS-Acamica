@@ -39,7 +39,9 @@
 // }
 
 .btn {
-	position: absolute;
+	position: relative;
+	top: 50%;
+	visibility: hidden;
 	transform: translateY(-50%);
 	background: transparent;
 	padding: 10px 10px 8px 10px;
@@ -65,16 +67,15 @@
 
 /*----------------SEGUNDA VERSIÓN-----------------------------------------------------------------*/
 
-.carousel {
-	margin: 2rem 0;
+#trending-carousel {
+	margin: 2rem 1rem;
 	display: flex;
-	justify-content: center;
 	width: 100%;
 	max-width: 1500px;
 	overflow-x: scroll;
 }
 
-.carousel .gif-giphy {
+#trending-carousel .gif-giphy {
 	scroll-snap-type: x mandatory;
 	margin: 0 1rem;
 	max-width: 243px;
@@ -82,8 +83,4 @@
 	width: 100%;
 	object-fit: cover;
 	scroll-snap-align: center;
-}
-
-.carousel .gif-giphy:first-child {
-	margin-left: 30%;
 }

@@ -86,6 +86,9 @@
 		display: flex;
 		align-items: center;
 		flex-direction: row-reverse;
+		.left-btn {
+			visibility: visible;
+		}
 	}
 
 	.right {
@@ -96,6 +99,9 @@
 		display: flex;
 		align-items: center;
 		flex-direction: row;
+		.right-btn {
+			visibility: visible;
+		}
 	}
 
 	.gif-info {

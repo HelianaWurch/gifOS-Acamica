@@ -52,11 +52,11 @@ let searchResult = () => {
 };
 
 search.addEventListener("click", searchResult); // Detecta el click en el boton y ejecuta la función contenedora.
-userInput.addEventListener("keyup", function (event) {
+userInput.addEventListener("keypress", function (event) {
 	// Hace click en el botón cuando se apreta enter en el userInput
-	event.preventDefault();
 	// Enter
-	if (event.keyCode === 13) {
+	if (event.key === "Enter") {
+		event.preventDefault();
 		search.click();
 	}
 });

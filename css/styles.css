@@ -211,9 +211,9 @@ section .fa-search {
 section #button-search {
   position: absolute;
   left: 15rem;
-  top: 0.5rem;
-  width: 2rem;
-  height: 2rem;
+  top: 0.2rem;
+  width: 3rem;
+  height: 3rem;
   overflow: hidden;
   opacity: 0%;
   cursor: pointer;
@@ -245,12 +245,6 @@ section .right-addon .fa-search {
 
 .color-title {
   color: #50e3c2; }
-
-.left-btn {
-  visibility: hidden; }
-
-.right-btn {
-  visibility: hidden; }
 
 footer {
   display: flex;
@@ -286,13 +280,11 @@ footer {
 
 @media screen and (min-width: 768px) {
   /*------------------Carousel--------------------------------------------------------------------*/
-  .right-btn {
-    visibility: visible; }
-  .left-btn {
+  #carousel-container .btn {
     visibility: visible;
-    position: relative;
-    top: 50%;
-    left: 15%; }
+    margin: 0 1rem; }
+  #trending-carousel::-webkit-scrollbar {
+    display: none; }
   /*------------------Cards-----------------------------------------------------------------------*/
   .gif-card:hover {
     background-color: #572ee5;
@@ -317,6 +309,10 @@ footer {
   /*--------------Containers borde blanco Carousel------------------------------------------------*/ }
 
 @media screen and (min-width: 1400px) {
+  /*------------------Carousel--------------------------------------------------------------------*/
+  #trending-carousel .gif-giphy {
+    width: 357px;
+    height: 275px; }
   /*------------------Nav-------------------------------------------------------------------------*/
   header {
     padding: 0 9.75rem; }
@@ -397,10 +393,6 @@ footer {
         margin-right: 1.5rem; } }
 
 @media screen and (min-width: 1700px) {
-  /*------------------Carousel--------------------------------------------------------------------*/
-  .carousel .gif-giphy {
-    max-width: 357px;
-    height: 275px; }
   /*------------------Search----------------------------------------------------------------------*/
   section #search-results-container {
     margin: 0 10%;
@@ -475,7 +467,9 @@ footer {
   opacity: 0; }
 
 .btn {
-  position: absolute;
+  position: relative;
+  top: 50%;
+  visibility: hidden;
   transform: translateY(-50%);
   background: transparent;
   padding: 10px 10px 8px 10px;
@@ -492,15 +486,14 @@ footer {
     color: #fff; }
 
 /*----------------SEGUNDA VERSIÓN-----------------------------------------------------------------*/
-.carousel {
-  margin: 2rem 0;
+#trending-carousel {
+  margin: 2rem 1rem;
   display: flex;
-  justify-content: center;
   width: 100%;
   max-width: 1500px;
   overflow-x: scroll; }
 
-.carousel .gif-giphy {
+#trending-carousel .gif-giphy {
   scroll-snap-type: x mandatory;
   margin: 0 1rem;
   max-width: 243px;
@@ -508,9 +501,6 @@ footer {
   width: 100%;
   object-fit: cover;
   scroll-snap-align: center; }
-
-.carousel .gif-giphy:first-child {
-  margin-left: 30%; }
 
 .modal-pause {
   z-index: 10;
@@ -585,6 +575,8 @@ footer {
     display: flex;
     align-items: center;
     flex-direction: row-reverse; }
+    .gif-max-modal .left .left-btn {
+      visibility: visible; }
   .gif-max-modal .right {
     grid-column-start: right;
     grid-column-end: right;
@@ -593,6 +585,8 @@ footer {
     display: flex;
     align-items: center;
     flex-direction: row; }
+    .gif-max-modal .right .right-btn {
+      visibility: visible; }
   .gif-max-modal .gif-info {
     grid-column-start: info;
     grid-column-end: info; }

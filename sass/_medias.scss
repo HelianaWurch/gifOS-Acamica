@@ -1,15 +1,13 @@
 @media screen and (min-width: 768px) {
 	/*------------------Carousel--------------------------------------------------------------------*/
 
-	.right-btn {
+	#carousel-container .btn {
 		visibility: visible;
+		margin: 0 1rem;
 	}
 
-	.left-btn {
-		visibility: visible;
-		position: relative;
-		top: 50%;
-		left: 15%;
+	#trending-carousel::-webkit-scrollbar {
+		display: none;
 	}
 
 	/*------------------Cards-----------------------------------------------------------------------*/
@@ -76,6 +74,13 @@
 }
 
 @media screen and (min-width: 1400px) {
+	/*------------------Carousel--------------------------------------------------------------------*/
+
+	#trending-carousel .gif-giphy {
+		width: 357px;
+		height: 275px;
+	}
+
 	/*------------------Nav-------------------------------------------------------------------------*/
 
 	header {
@@ -207,16 +212,6 @@
 }
 
 @media screen and (min-width: 1700px) {
-	/*------------------Carousel--------------------------------------------------------------------*/
-
-	.carousel {
-	}
-
-	.carousel .gif-giphy {
-		max-width: 357px;
-		height: 275px;
-	}
-
 	/*------------------Search----------------------------------------------------------------------*/
 
 	section {
