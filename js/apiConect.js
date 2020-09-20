@@ -1,164 +1,174 @@
-/*----------Conect & Endpoints--------------------------------------------------------------------*/
+/*--------------Recorridos de Arrays de Endpoints-------------------------------------------------*/
 
-const api = "https://api.giphy.com/v1/gifs/";
-const apiKey = "YWZLzFV5yLHVVxELdCo5Hmj0E7PUyMY8";
-const apiSearch = `${api}search?&api_key=${apiKey}&q=`;
-const apiTrending = `${api}trending?&api_key=${apiKey}&limit=25&rating=g`;
+/*ESCRIBIR*/
 
-/*----------------Cache DOM-----------------------------------------------------------------------*/
-const userInput = document.querySelector("#input-text"); // Detecta el input.
-const search = document.querySelector("#button-search"); // Detecta el boton.
-const searchResults = document.getElementById("search-results-container");
+/* 
+Actualmente llamando a la api un limit default (25), y sólo estas tomando 12;
 
-/*-----------------Fetchs-------------------------------------------------------------------------*/
+*/
 
-async function apiSearchCall(searchKeyword) {
-	const response = await fetch(apiSearch + searchKeyword);
-	const jsonResponse = await response.json();
-	return jsonResponse;
-}
+/* Array general */
+
+const forApi = (url, container) => {
+	for (let i = 0; i < url.length; i++) {
+		const gifUrl = url[i].images.original.url;
+		const gifTitle = url[i].title;
+		const gifUser = url[i].username;
+		doStuffWithImage(gifUrl, gifTitle, gifUser, container);
+	}
+};
+
+/* Array Search */
+
+const forSearch = (url, container) => {
+	forApi(url, searchResults);
+};
+
+/* Array Trending */
+
+const forTrending = (url, container) => {
+	forApi(url, trendingResults);
+};
+
+/*-----Promesas de si hay o no resultados---------------------------------------------*/
 
 function giphySearch(searchKeyword) {
-	apiSearchCall(searchKeyword)
+	contador = 0;
+	apiSearchCall(searchKeyword, 12, 0)
 		.then((jsonData) => {
 			console.log(jsonData);
 			searchResults.innerHTML = "";
-			forGif(jsonData.data);
+			forSearch(jsonData.data);
 		})
 		.catch((error) => {
 			console.error("api error", error); //catch de error
 		});
 }
 
-function doStuffWithImage(url, title, user) {
-	gifConstructor(url, title, user);
+function giphySearchSeeMore(searchKeyword) {
+	contador += 12;
+	apiSearchCall(searchKeyword, 12, contador)
+		.then((jsonData) => {
+			console.log(jsonData);
+			forSearch(jsonData.data);
+		})
+		.catch((error) => {
+			console.error("api error", error); //catch de error
+		});
 }
 
-const forGif = (url) => {
-	for (let i = 0; i < 12; i++) {
-		const gifUrl = url[i].images.original.url;
-		const gifTitle = url[i].title;
-		const gifUser = url[i].username;
-		doStuffWithImage(gifUrl, gifTitle, gifUser);
-		console.log(gifUser);
-		console.log(gifTitle);
-	}
+function giphyTrending() {
+	apiTrendingCall()
+		.then((jsonData) => {
+			trendingResults.innerHTML = "";
+			forTrending(jsonData.data);
+		})
+		.catch((error) => {
+			console.error("api error", error);
+		});
+}
+
+function doStuffWithImage(url, title, user, container) {
+	gifConstructor(url, title, user, container);
+}
+
+/*---------------Ejecutar Endpoints---------------------------------------------------------------*/
+
+/* Ejecutar Endpoint Trending */
+
+//Llamar al Trending cuando apenas carga la ventana.
+window.onload = function () {
+	giphyTrending();
 };
 
-/*-----------------Search-------------------------------------------------------------------------*/
+/*---------------Constructors---------------------------------------------------------------------*/
 
-let searchResult = () => {
-	giphySearch(userInput.value); // Toma lo que escribio el usuario en el input.
+/* Title Search Constructor */
+
+let titleSearchConstructor = () => {
+	titleSearch.innerHTML = userInput.value;
 };
 
-search.addEventListener("click", searchResult); // Detecta el click en el boton y ejecuta la función contenedora.
-userInput.addEventListener("keypress", function (event) {
-	// Hace click en el botón cuando se apreta enter en el userInput
-	// Enter
-	if (event.key === "Enter") {
-		event.preventDefault();
-		search.click();
-	}
-});
+function createElement(elementTag, elementClass) {
+	const element = document.createElement(elementTag);
+	element.className = elementClass;
+	return element;
+}
 
-/*---------------Trending-------------------------------------------------------------------------*/
+function createImgElement(elementClass, elementSrc, elementAlt) {
+	const element = createElement("img", elementClass);
+	element.src = elementSrc;
+	element.alt = elementAlt;
+	return element;
+}
 
-let trendingGifs = () => {
-	setup(apiTrending);
-};
+/* Btn Search Constructor */
+function buttonSearchConstructor(container, elementID, elementClass) {
+	const seemoreBtn = createElement("button", "btn-seemore");
+	seemoreBtn.id = elementID;
+	seemoreBtn.className = elementClass;
 
-// let setup = (path, input) => {
-// 	fetch(path + input)
-// 		.then((response) => response.json())
-// 		.then((jsonResponse) => {
-// 			gotData(jsonResponse.data);
-// 		})
-// 		.catch((error) => {
-// 			console.error("api error", error);
-// 		});
-// };
+	const seeMoreBtnImg = createImgElement("", "./assets/CTA-ver-mas.svg", "see more gifs button");
 
-// let gotData = (url) => {
-// 	for (let i = 0; i < 5; i++) {
-// 		const gifUrl = url[i].images.original.url;
-// 		const gifTitle = url[i].title;
-// 		const gifUser = url[i].title;
-// 		fetch(gifUrl)
-// 			.then((response) => {
-// 				console.log(gifUrl);
-// 				console.log(gifTitle);
-// 				gifConstructor(gifUrl, gifTitle, gifUser); //Imprime los Gifs
-// 			})
-// 			.catch((error) => {
-// 				console.error("gif error", error);
-// 			});
-// 	}
-// };
+	seeMoreBtnImg.onmouseover = function () {
+		this.src = "./assets/CTA-ver-mas-hover.svg";
+	};
 
-/*------------Gif Constructor---------------------------------------------------------------------*/
+	seeMoreBtnImg.onmouseout = function () {
+		this.src = "./assets/CTA-ver-mas.svg";
+	};
 
-// let gifConstructor = (src, title, user) => {
-// 	let gifImage = document.createElement("img");
-// 	gifImage.src = src; //Agregamos las propiedades al gif creado.
-// 	gifImage.className = "gif-giphy";
-// 	gifImage.alt = title;
+	seemoreBtn.appendChild(seeMoreBtnImg);
 
-// 	let gifCard = document.createElement("div"); //Asignamos el elemento contenedor de cada gif.
-// 	gifCard.className = "gif-card";
-// 	gifCard.appendChild(gifImage);
+	seemoreBtn.addEventListener("click", giphySearchSeeMore(userInput.value));
+	container.appendChild(seemoreBtn);
+}
 
-// 	let gifCardContainer = document.getElementById("cards-container"); //Asignamos el elemento contenedor general.
-// 	gifCardContainer.appendChild(gifCard); //Le asignamos los gifs creados como hijos.
-// }
+function gifConstructor(src, title, user, container) {
+	const gifImage = createImgElement("gif-giphy", src, title);
 
-let gifConstructor = (src, title, user) => {
-	let gifImage = document.createElement("img");
-	gifImage.src = src; //Agregamos las propiedades al gif creado.
-	gifImage.className = "gif-giphy";
-	gifImage.alt = title;
-
-	let gifUserP = document.createElement("p");
+	const gifUserP = createElement("p", "gif-username");
 	gifUserP.innerHTML = user;
-	gifUserP.className = "gif-username";
 
-	let gifTitleP = document.createElement("p");
+	const gifTitleP = createElement("p", "gif-title");
 	gifTitleP.innerHTML = title;
-	gifTitleP.className = "gif-title";
 
-	let gifButtonFavouriteImg = document.createElement("img");
-	gifButtonFavouriteImg.src = "./assets/icon-fav-hover.svg";
+	const gifButtonFavourite = createElement("button", "card-btn favourite-btn");
+	const gifButtonDownload = createElement("button", "card-btn download-btn");
+	const gifButtonMax = createElement("button", "card-btn max-btn");
+	const gifButtonsContainer = createElement("div", "gif-buttons-container");
+	const gifCard = createElement("div", "gif-card");
 
-	let gifButtonFavourite = document.createElement("button");
-	gifButtonFavourite.className = "img-btn favourite-btn";
+	const gifButtonFavouriteImg = createImgElement(
+		"",
+		"./assets/icon-fav.svg",
+		"gif favourite button"
+	);
+
+	const gifButtonDownloadImg = createImgElement(
+		"",
+		"./assets/icon-download.svg",
+		"gif download button"
+	);
+
+	const gifButtonMaxImg = createImgElement(
+		"",
+		"./assets/icon-max-normal.svg",
+		"gif max modal button"
+	);
+
 	gifButtonFavourite.appendChild(gifButtonFavouriteImg);
-
-	let gifButtonDownloadImg = document.createElement("img");
-	gifButtonDownloadImg.src = "./assets/icon-download.svg";
-
-	let gifButtonDownload = document.createElement("button");
-	gifButtonDownload.className = "img-btn download-btn";
 	gifButtonDownload.appendChild(gifButtonDownloadImg);
-
-	let gifButtonMaxImg = document.createElement("img");
-	gifButtonMaxImg.src = "./assets/icon-max.svg";
-
-	let gifButtonMax = document.createElement("button");
-	gifButtonMax.className = "img-btn max-btn";
 	gifButtonMax.appendChild(gifButtonMaxImg);
 
-	let gifButtonsContainer = document.createElement("div");
-	gifButtonsContainer.className = "gif-buttons-container";
 	gifButtonsContainer.appendChild(gifButtonFavourite);
 	gifButtonsContainer.appendChild(gifButtonDownload);
 	gifButtonsContainer.appendChild(gifButtonMax);
 
-	let gifCard = document.createElement("div"); //Asignamos el elemento contenedor de cada gif.
-	gifCard.className = "gif-card";
 	gifCard.appendChild(gifImage);
 	gifCard.appendChild(gifButtonsContainer);
 	gifCard.appendChild(gifUserP);
 	gifCard.appendChild(gifTitleP);
 
-	//Asignamos el elemento contenedor general.
-	searchResults.appendChild(gifCard); //Le asignamos los gifs creados como hijos.
-};
+	container.appendChild(gifCard);
+}

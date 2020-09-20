@@ -3,6 +3,12 @@ header {
 	top: 0;
 	z-index: 15;
 	background-color: $white;
+	transition: 3s ease all;
+	-webkit-transition: 3s ease all;
+	-moz-transition: 3s ease all;
+	-ms-transition: 3s ease all;
+	-o-transition: 3s ease all;
+
 	body.dark-mode-colors & {
 		background: $medium-grey;
 	}
@@ -67,11 +73,21 @@ header {
 		}
 
 		.nav-box-one {
-			background-color: $white;
 			padding: 29px 22px 22px 22px;
 			body.dark-mode-colors & {
-				background: $medium-grey;
 			}
+		}
+
+		#nav-creargifos-btn {
+			display: none;
+		}
+
+		#nav-creargifos-link {
+			display: unset;
+		}
+
+		.crear-gifos-hover {
+			display: none;
 		}
 
 		.nav-box-two {

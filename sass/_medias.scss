@@ -1,11 +1,33 @@
 @media screen and (min-width: 768px) {
 	/*------------------Carousel--------------------------------------------------------------------*/
+	#carousel-container {
+		margin: 0rem 5.2rem;
 
-	#carousel-container .btn {
-		visibility: visible;
-		margin: 0 1rem;
+		.btn {
+			visibility: visible;
+			margin: 0 1rem;
+		}
+
+		#trending-carousel {
+			display: flex;
+			width: 100%;
+			max-width: 1500px;
+			overflow-x: scroll;
+
+			.gif-card {
+				position: relative;
+				margin: 0 0.5rem;
+				width: 357px;
+				height: 275px;
+			}
+
+			.gif-giphy {
+				width: 357px;
+				height: 275px;
+				object-fit: cover;
+			}
+		}
 	}
-
 	#trending-carousel::-webkit-scrollbar {
 		display: none;
 	}
@@ -41,36 +63,6 @@
 			}
 		}
 	}
-
-	/*--------------Containers borde blanco Carousel------------------------------------------------*/
-
-	// .container .white-bg-one {
-	// 	visibility: visible;
-	// 	background-color: $white;
-	// 	position: absolute;
-	// 	top: 0rem;
-	// 	left: 0rem;
-	// 	height: 20rem;
-	// 	width: 10rem;
-	// 	z-index: 1;
-	// 	body.dark-mode-colors & {
-	// 		background-color: $medium-grey;
-	// 	}
-	// }
-
-	// .container .white-bg-two {
-	// 	visibility: visible;
-	// 	background-color: $white;
-	// 	position: absolute;
-	// 	top: 0rem;
-	// 	right: 0rem;
-	// 	height: 20rem;
-	// 	width: 10rem;
-	// 	z-index: 1;
-	// 	body.dark-mode-colors & {
-	// 		background-color: $medium-grey;
-	// 	}
-	// }
 }
 
 @media screen and (min-width: 1400px) {
@@ -86,19 +78,50 @@
 	header {
 		padding: 0 9.75rem;
 		nav {
+			#nav-creargifos-btn {
+				display: unset;
+			}
+
+			#nav-creargifos-link {
+				display: none;
+			}
+
+			.crear-gifos-hover {
+				display: unset;
+				position: relative;
+				left: -58px;
+				cursor: pointer;
+				opacity: 0%;
+				&:hover {
+					opacity: 100%;
+				}
+			}
+
+			.nav-box-one {
+				padding: 18px 22px 22px 22px;
+			}
+
 			.nav-box-two {
 				padding: 0;
+
 				ul {
 					position: relative;
 					top: 0;
-					right: 0;
+					right: -8%;
 					width: unset;
 					overflow: hidden;
 					background: unset;
 					height: unset;
+					display: flex;
+					align-items: center;
+
 					body.dark-mode-colors & {
-						background: $medium-grey;
+						background: none;
 						opacity: 100%;
+					}
+
+					li:first-child {
+						margin-top: 0;
 					}
 
 					li {

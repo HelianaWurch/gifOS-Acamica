@@ -13,8 +13,6 @@ body {
 	}
 }
 
-//Dark Mode
-
 a {
 	text-decoration-line: none;
 	-moz-text-decoration-line: none;
@@ -22,6 +20,7 @@ a {
 
 h1,
 h2,
+h3,
 h4 {
 	font-family: $font-family-montserrat;
 	font-weight: 700;
@@ -116,6 +115,10 @@ section {
 		}
 	}
 
+	#titleSearch {
+		margin-bottom: 2rem;
+	}
+
 	#button-search {
 		position: absolute;
 		left: 15rem;
@@ -162,4 +165,16 @@ section {
 
 .color-title {
 	color: $cyan;
+}
+
+#btn-results-seemore {
+	display: flex;
+	justify-content: center;
+	margin-top: 4rem;
+}
+
+#see-more-btn {
+	background-color: $white;
+	cursor: pointer;
+	border: none;
 }

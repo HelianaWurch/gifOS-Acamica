@@ -23,18 +23,20 @@
 	opacity: 0%;
 }
 
-.img-btn {
-	width: 32px;
-	height: 32px;
-	margin: 0.2rem;
+.card-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 2.3rem;
+	height: 2.3rem;
+	margin: 0 0.2rem;
 	border: 1px solid $violet;
-	cursor: pointer;
 	border-radius: 6px;
-	background-color: $white;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	-ms-border-radius: 6px;
 	-o-border-radius: 6px;
+	cursor: pointer;
 }
 
 .gif-username {

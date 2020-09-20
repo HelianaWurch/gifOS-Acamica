@@ -53,42 +53,9 @@
 			</nav>
 		</header>
 
-		<!--Search-->
-		<section id="search-section">
-			<h1>Inspírate, busca, guarda, y crea los mejores <span class="color-title">GIFOS</span></h1>
-			<img id="search-img" src="./assets/ilustra_header.svg" alt="Welcome Search" />
-
-			<form role="search">
-				<div class="inner-addon right-addon">
-					<button id="button-search" type="button"></button>
-					<svg
-						class="fa-search"
-						xmlns="http://www.w3.org/2000/svg"
-						xmlns:xlink="http://www.w3.org/1999/xlink"
-					>
-						<defs>
-							<path
-								d="M8.5 0a8.5 8.5 0 016.677 13.761l4.53 4.532a1 1 0 01-1.414 1.414l-4.532-4.53A8.5 8.5 0 118.5 0zm0 2a6.5 6.5 0 104.548 11.144l.045-.051c.016-.016.033-.032.05-.046A6.5 6.5 0 008.5 2z"
-								id="a"
-							/>
-						</defs>
-						<use fill-rule="nonzero" xlink:href="#a" />
-					</svg>
-					<label for="input-text"></label>
-					<input id="input-text" type="search" class="form-control" placeholder="Busca GIFOS y más" />
-				</div>
-			</form>
-			<h4>Trending:</h4>
-			<p>Reactions, Entertainment, Sports, Stickers, Artists</p>
-		</section>
-
-		<!-- Resultado de busqueda -->
-		<section>
-			<div id="search-results-value"><h2 id="titleSearch"></h2></div>
-			<div id="search-results-general-container">
-				<div id="search-results-container"></div>
-			</div>
-			<div id="btn-results-seemore"></div>
+		<section id="favoritos">
+			<div></div>
+			<h2>Favoritos</h2>
 		</section>
 
 		<!--Trending GIFOS-->
@@ -175,9 +142,8 @@
 		</div>
 
 		<script src="./js/modal.js"></script>
-		<script src="./js/apifetchsydom.js"></script>
 		<script src="./js/apiConect.js"></script>
-		<script src="./js/search.js"></script>
+		<script src="./js/apifetchsydom.js"></script>
 		<script src="./js/carousel.js"></script>
 		<script src="./js/darkmode.js"></script>
 	</body>

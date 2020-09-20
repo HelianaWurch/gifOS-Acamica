@@ -9,7 +9,12 @@ header {
   position: sticky;
   top: 0;
   z-index: 15;
-  background-color: #fff; }
+  background-color: #fff;
+  transition: 3s ease all;
+  -webkit-transition: 3s ease all;
+  -moz-transition: 3s ease all;
+  -ms-transition: 3s ease all;
+  -o-transition: 3s ease all; }
   body.dark-mode-colors header {
     background: #37383c; }
   header nav {
@@ -58,10 +63,13 @@ header {
     header nav .nav-logo {
       width: 48px; }
     header nav .nav-box-one {
-      background-color: #fff;
       padding: 29px 22px 22px 22px; }
-      body.dark-mode-colors header nav .nav-box-one {
-        background: #37383c; }
+    header nav #nav-creargifos-btn {
+      display: none; }
+    header nav #nav-creargifos-link {
+      display: unset; }
+    header nav .crear-gifos-hover {
+      display: none; }
     header nav .nav-box-two {
       padding: 47px 22px 34px 0;
       /*CHECKBOX*/
@@ -130,6 +138,7 @@ a {
 
 h1,
 h2,
+h3,
 h4 {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -139,6 +148,7 @@ h4 {
   text-align: center; }
   body.dark-mode-colors h1, body.dark-mode-colors
   h2, body.dark-mode-colors
+  h3, body.dark-mode-colors
   h4 {
     color: #fff; }
 
@@ -208,6 +218,9 @@ section .fa-search {
   body.dark-mode-colors section .fa-search {
     fill: #fff; }
 
+section #titleSearch {
+  margin-bottom: 2rem; }
+
 section #button-search {
   position: absolute;
   left: 15rem;
@@ -246,16 +259,23 @@ section .right-addon .fa-search {
 .color-title {
   color: #50e3c2; }
 
+#btn-results-seemore {
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem; }
+
+#see-more-btn {
+  background-color: #fff;
+  cursor: pointer;
+  border: none; }
+
 footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
   margin: 3rem 0 1rem 0;
   text-align: center; }
-  body.dark-mode-colors footer {
-    background-color: #37383c; }
   footer .social {
     display: flex;
     justify-content: center;
@@ -280,9 +300,25 @@ footer {
 
 @media screen and (min-width: 768px) {
   /*------------------Carousel--------------------------------------------------------------------*/
-  #carousel-container .btn {
-    visibility: visible;
-    margin: 0 1rem; }
+  #carousel-container {
+    margin: 0rem 5.2rem; }
+    #carousel-container .btn {
+      visibility: visible;
+      margin: 0 1rem; }
+    #carousel-container #trending-carousel {
+      display: flex;
+      width: 100%;
+      max-width: 1500px;
+      overflow-x: scroll; }
+      #carousel-container #trending-carousel .gif-card {
+        position: relative;
+        margin: 0 0.5rem;
+        width: 357px;
+        height: 275px; }
+      #carousel-container #trending-carousel .gif-giphy {
+        width: 357px;
+        height: 275px;
+        object-fit: cover; }
   #trending-carousel::-webkit-scrollbar {
     display: none; }
   /*------------------Cards-----------------------------------------------------------------------*/
@@ -305,8 +341,7 @@ footer {
     section #search-results-container .gif-giphy,
     section #search-results-container .gif-card {
       width: 230px;
-      height: 174px; }
-  /*--------------Containers borde blanco Carousel------------------------------------------------*/ }
+      height: 174px; } }
 
 @media screen and (min-width: 1400px) {
   /*------------------Carousel--------------------------------------------------------------------*/
@@ -316,19 +351,37 @@ footer {
   /*------------------Nav-------------------------------------------------------------------------*/
   header {
     padding: 0 9.75rem; }
+    header nav #nav-creargifos-btn {
+      display: unset; }
+    header nav #nav-creargifos-link {
+      display: none; }
+    header nav .crear-gifos-hover {
+      display: unset;
+      position: relative;
+      left: -58px;
+      cursor: pointer;
+      opacity: 0%; }
+      header nav .crear-gifos-hover:hover {
+        opacity: 100%; }
+    header nav .nav-box-one {
+      padding: 18px 22px 22px 22px; }
     header nav .nav-box-two {
       padding: 0; }
       header nav .nav-box-two ul {
         position: relative;
         top: 0;
-        right: 0;
+        right: -8%;
         width: unset;
         overflow: hidden;
         background: unset;
-        height: unset; }
+        height: unset;
+        display: flex;
+        align-items: center; }
         body.dark-mode-colors header nav .nav-box-two ul {
-          background: #37383c;
+          background: none;
           opacity: 100%; }
+        header nav .nav-box-two ul li:first-child {
+          margin-top: 0; }
         header nav .nav-box-two ul li {
           padding-left: 50px;
           display: inline-block; }
@@ -432,18 +485,20 @@ footer {
   position: absolute;
   opacity: 0%; }
 
-.img-btn {
-  width: 32px;
-  height: 32px;
-  margin: 0.2rem;
+.card-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  margin: 0 0.2rem;
   border: 1px solid #572ee5;
-  cursor: pointer;
   border-radius: 6px;
-  background-color: #fff;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   -ms-border-radius: 6px;
-  -o-border-radius: 6px; }
+  -o-border-radius: 6px;
+  cursor: pointer; }
 
 .gif-username {
   font-family: "Roboto", sans-serif;
@@ -466,7 +521,25 @@ footer {
   color: #fff;
   opacity: 0; }
 
+#trending-gifos {
+  margin-top: 2rem;
+  padding: 2rem 0;
+  background-color: #fff;
+  transition: 3s ease all;
+  -webkit-transition: 3s ease all;
+  -moz-transition: 3s ease all;
+  -ms-transition: 3s ease all;
+  -o-transition: 3s ease all; }
+  body.dark-mode-colors #trending-gifos {
+    background-color: #222326; }
+
+.carousel-container {
+  height: 100%;
+  align-content: center; }
+
 .btn {
+  width: 40px;
+  height: 40px;
   position: relative;
   top: 50%;
   visibility: hidden;
@@ -476,31 +549,44 @@ footer {
   border: 1px solid #572ee5;
   cursor: pointer;
   background-color: #fff; }
-  .btn:hover {
-    background-color: #572ee5; }
 
 .btn img {
-  width: 20px;
-  height: 20px; }
-  .btn img:hover {
-    color: #fff; }
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 12px;
+  left: 12px;
+  right: 12px; }
+
+.btn .btn-hover {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: -1px;
+  left: 0px;
+  right: 0px;
+  opacity: 0%; }
+  .btn .btn-hover:hover {
+    opacity: 100%; }
 
 /*----------------SEGUNDA VERSIÓN-----------------------------------------------------------------*/
 #trending-carousel {
-  margin: 2rem 1rem;
+  margin: 2rem 0rem;
   display: flex;
   width: 100%;
   max-width: 1500px;
   overflow-x: scroll; }
-
-#trending-carousel .gif-giphy {
-  scroll-snap-type: x mandatory;
-  margin: 0 1rem;
-  max-width: 243px;
-  height: 187px;
-  width: 100%;
-  object-fit: cover;
-  scroll-snap-align: center; }
+  #trending-carousel .gif-card {
+    position: relative;
+    margin: 0 0.5rem;
+    width: 243px;
+    height: 187px; }
+  #trending-carousel .gif-giphy {
+    scroll-snap-type: x mandatory;
+    width: 243px;
+    height: 187px;
+    object-fit: cover;
+    scroll-snap-align: center; }
 
 .modal-pause {
   z-index: 10;
