@@ -19,3 +19,23 @@ userInput.addEventListener("keypress", function (event) {
 		searchBtn.click();
 	}
 });
+
+// Detecta si el boton de Ver Más fue creado
+function detectBtnSeeMore(button) {
+	if (document.getElementById("see-more-btn")) {
+		button.addEventListener("click", function (event) {
+			giphySearchSeeMore(userInput.value);
+			event.stopPropagation();
+			console.log("Cargando más gifs");
+		});
+	} else {
+		console.log("NO existe el botón 'ver más'");
+	}
+}
+
+function appendChildBtn(button, img) {
+	if (!document.getElementById("see-more-btn")) {
+		searchSeeMoreBtn.appendChild(button);
+		button.appendChild(img);
+	}
+}

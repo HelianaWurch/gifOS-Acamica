@@ -259,15 +259,48 @@ section .right-addon .fa-search {
 .color-title {
   color: #50e3c2; }
 
+#search-results-container {
+  overflow: auto;
+  overflow-y: hidden; }
+
 #btn-results-seemore {
   display: flex;
   justify-content: center;
+  flex-flow: column-reverse;
   margin-top: 4rem; }
 
 #see-more-btn {
   background-color: #fff;
   cursor: pointer;
   border: none; }
+
+.no-result-img {
+  display: none;
+  position: relative;
+  top: -3rem;
+  background-color: #fff; }
+  body.dark-mode-colors .no-result-img {
+    transition: 1s ease all;
+    -webkit-transition: 1s ease all;
+    -moz-transition: 1s ease all;
+    -ms-transition: 1s ease all;
+    -o-transition: 1s ease all;
+    background-color: #37383c; }
+
+.no-result-p {
+  position: relative;
+  top: -3rem;
+  font-weight: 700;
+  font-size: 1.375rem;
+  margin-bottom: 2rem;
+  color: #50e3c2;
+  display: none; }
+
+.hidden {
+  display: none; }
+
+.visible {
+  display: unset; }
 
 footer {
   display: flex;
@@ -334,7 +367,6 @@ footer {
   /*------------------Search----------------------------------------------------------------------*/
   section #search-results-container {
     margin: 2rem;
-    max-height: 50rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr); }
@@ -465,7 +497,6 @@ footer {
 
 #search-results-container {
   padding: 0 1rem;
-  max-height: 50rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(6, 1fr);

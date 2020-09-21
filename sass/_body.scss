@@ -167,9 +167,15 @@ section {
 	color: $cyan;
 }
 
+#search-results-container {
+	overflow: auto;
+	overflow-y: hidden;
+}
+
 #btn-results-seemore {
 	display: flex;
 	justify-content: center;
+	flex-flow: column-reverse;
 	margin-top: 4rem;
 }
 
@@ -177,4 +183,37 @@ section {
 	background-color: $white;
 	cursor: pointer;
 	border: none;
+}
+
+.no-result-img {
+	display: none;
+	position: relative;
+	top: -3rem;
+	background-color: $white;
+	body.dark-mode-colors & {
+		transition: 1s ease all;
+		-webkit-transition: 1s ease all;
+		-moz-transition: 1s ease all;
+		-ms-transition: 1s ease all;
+		-o-transition: 1s ease all;
+		background-color: $medium-grey;
+	}
+}
+
+.no-result-p {
+	position: relative;
+	top: -3rem;
+	font-weight: 700;
+	font-size: $font-size-twtw;
+	margin-bottom: 2rem;
+	color: $cyan;
+	display: none;
+}
+
+.hidden {
+	display: none;
+}
+
+.visible {
+	display: unset;
 }
