@@ -7,10 +7,14 @@ const apiTrending = `${api}trending?&api_key=${apiKey}&limit=25&rating=g`;
 
 /*----------------Cache DOM-----------------------------------------------------------------------*/
 const userInput = document.querySelector("#input-text"); // Detecta el input.
+const userInputNav = document.querySelector("#input-text-nav"); // Detecta el input del nav.
 const searchBtn = document.querySelector("#button-search"); // Detecta el boton.
+const searchBtnNav = document.querySelector("#button-search-nav"); // Detecta el boton del nav.
+const searchInNav = document.getElementById("search-in-nav"); // Detecta el search dentro del nav.
 const searchResults = document.getElementById("search-results-container"); //Detecta el contenedor del Search.
 const searchTitleResults = document.getElementById("search-results-value"); //Detecta el contenedor del titulo Search.
 const searchSeeMoreBtn = document.getElementById("btn-results-seemore"); //Detecta el contenedor del boton Ver Más del Search.
+const favBtn = document.getElementsByClassName("favourite-btn"); //Detecta los botones de favoritos.
 
 /* Trending */
 const trendingResults = document.getElementById("trending-carousel"); //Detecta el carousel de trendings.
@@ -49,12 +53,12 @@ const forApi = (url, container) => {
 		const gifTitle = url[i].title;
 		const gifUser = url[i].username;
 		const gifID = url[i].id;
-		doStuffWithImage(gifUrl, gifTitle, gifUser, container);
+		doStuffWithImage(gifUrl, gifTitle, gifUser, gifID, container);
 	}
 };
 
-function doStuffWithImage(url, title, user, container) {
-	gifConstructor(url, title, user, container);
+function doStuffWithImage(url, title, user, id, container) {
+	gifConstructor(url, title, user, id, container);
 }
 
 /*-----Promesas de si hay o no resultados---------------------------------------------*/
@@ -74,8 +78,8 @@ function giphySearch(searchKeyword) {
 		});
 }
 
+//Retorna si hay o no resultado de busqueda.
 function showResults(data, callback, url, parametro) {
-	//Retorna si hay o no resultado de busqueda.
 	if (data.pagination.total_count == 0) {
 		noResultConstructor(searchSeeMoreBtn);
 		noResultParagraph.classList.toggle("visible");

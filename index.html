@@ -14,17 +14,46 @@
 
 	<body>
 		<!--Header - Nav-->
+
 		<header>
 			<nav>
 				<div class="nav-box-one">
 					<a href="./index.html"><img class="nav-logo" src="./assets/logo-desktop.svg" alt="logo" /></a>
 				</div>
-				<div class="nav-box-two">
+				<div id="search-in-nav" class="nav-box-two">
+					<form autocomplete="off" role="search">
+						<div class="inner-addon right-addon">
+							<button id="button-search-nav" type="button"></button>
+							<svg
+								class="fa-search"
+								xmlns="http://www.w3.org/2000/svg"
+								xmlns:xlink="http://www.w3.org/1999/xlink"
+							>
+								<defs>
+									<path
+										d="M8.5 0a8.5 8.5 0 016.677 13.761l4.53 4.532a1 1 0 01-1.414 1.414l-4.532-4.53A8.5 8.5 0 118.5 0zm0 2a6.5 6.5 0 104.548 11.144l.045-.051c.016-.016.033-.032.05-.046A6.5 6.5 0 008.5 2z"
+										id="a"
+									/>
+								</defs>
+								<use fill-rule="nonzero" xlink:href="#a" />
+							</svg>
+							<label for="input-text"></label>
+							<input
+								id="input-text-nav"
+								type="search"
+								class="form-control"
+								placeholder="Busca GIFOS y más"
+							/>
+						</div>
+					</form>
+				</div>
+				<div class="nav-box-three">
 					<input type="checkbox" id="checkbox" />
 					<label for="checkbox"></label>
 					<span></span>
 					<span></span>
 					<span></span>
+
 					<ul id="nav-ul">
 						<li><a id="nocturno" href="#" onclick="darkMode()">Modo Nocturno</a></li>
 						<li>
@@ -58,24 +87,33 @@
 			<h1>Inspírate, busca, guarda, y crea los mejores <span class="color-title">GIFOS</span></h1>
 			<img id="search-img" src="./assets/ilustra_header.svg" alt="Welcome Search" />
 
-			<form role="search">
+			<form id="search-container" autocomplete="off" role="search">
 				<div class="inner-addon right-addon">
-					<button id="button-search" type="button"></button>
-					<svg
-						class="fa-search"
-						xmlns="http://www.w3.org/2000/svg"
-						xmlns:xlink="http://www.w3.org/1999/xlink"
-					>
-						<defs>
-							<path
-								d="M8.5 0a8.5 8.5 0 016.677 13.761l4.53 4.532a1 1 0 01-1.414 1.414l-4.532-4.53A8.5 8.5 0 118.5 0zm0 2a6.5 6.5 0 104.548 11.144l.045-.051c.016-.016.033-.032.05-.046A6.5 6.5 0 008.5 2z"
-								id="a"
-							/>
-						</defs>
-						<use fill-rule="nonzero" xlink:href="#a" />
-					</svg>
-					<label for="input-text"></label>
-					<input id="input-text" type="search" class="form-control" placeholder="Busca GIFOS y más" />
+					<div class="autocomplete">
+						<button id="button-search" type="button"></button>
+						<svg
+							class="fa-search"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+						>
+							<defs>
+								<path
+									d="M8.5 0a8.5 8.5 0 016.677 13.761l4.53 4.532a1 1 0 01-1.414 1.414l-4.532-4.53A8.5 8.5 0 118.5 0zm0 2a6.5 6.5 0 104.548 11.144l.045-.051c.016-.016.033-.032.05-.046A6.5 6.5 0 008.5 2z"
+									id="a"
+								/>
+							</defs>
+							<use fill-rule="nonzero" xlink:href="#a" />
+						</svg>
+						<label for="input-text"></label>
+
+						<input
+							id="input-text"
+							type="text"
+							name="suggest"
+							class="form-control"
+							placeholder="Busca GIFOS y más"
+						/>
+					</div>
 				</div>
 			</form>
 			<h4>Trending:</h4>

@@ -91,6 +91,11 @@ header {
 		}
 
 		.nav-box-two {
+			margin-right: 4rem;
+			display: none;
+		}
+
+		.nav-box-three {
 			padding: 47px 22px 34px 0;
 
 			/*CHECKBOX*/
@@ -161,4 +166,36 @@ header {
 			-o-transform: rotate(-45deg) translate(1px, 0px);
 		}
 	}
+}
+
+.scroll-up {
+	transition: ease-out;
+	-webkit-transition: ease-out;
+	-moz-transition: ease-out;
+	-ms-transition: ease-out;
+	-o-transition: ease-out;
+	transition-duration: 1500ms;
+	transform: translateY(-140%);
+	-webkit-transform: translateY(-140%);
+	-moz-transform: translateY(-140%);
+	-ms-transform: translateY(-140%);
+	-o-transform: translateY(-140%);
+}
+
+.scroll-down {
+	transition: ease-out;
+	-webkit-transition: ease-out;
+	-moz-transition: ease-out;
+	-ms-transition: ease-out;
+	-o-transition: ease-out;
+	transition-duration: 1000ms;
+	transform: translateY(0%);
+	-webkit-transform: translateY(0%);
+	-moz-transform: translateY(0%);
+	-ms-transform: translateY(0%);
+	-o-transform: translateY(0%);
+}
+
+#input-text-nav {
+	width: 30rem;
 }

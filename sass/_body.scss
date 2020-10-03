@@ -78,82 +78,9 @@ section {
 		}
 	}
 
-	input {
-		font-family: $font-family-roboto;
-		font-size: $font-size-sxtn;
-		font-weight: 400;
-		padding: 1rem;
-		border: 1px solid $violet;
-		border-radius: 50px;
-		width: 18rem;
-		-webkit-border-radius: 50px;
-		-moz-border-radius: 50px;
-		-ms-border-radius: 50px;
-		-o-border-radius: 50px;
-		body.dark-mode-colors & {
-			border: 1px solid $white;
-			background-color: $medium-grey;
-			color: $light-grey;
-		}
-		&:focus {
-			outline: none;
-		}
-	}
-
-	.inner-addon {
-		position: relative;
-	}
-
-	.fa-search {
-		margin: 5px;
-		fill: $violet;
-		width: 20px;
-		height: 20px;
-
-		body.dark-mode-colors & {
-			fill: $white;
-		}
-	}
-
 	#titleSearch {
 		margin-bottom: 2rem;
 	}
-
-	#button-search {
-		position: absolute;
-		left: 15rem;
-		top: 0.2rem;
-		width: 3rem;
-		height: 3rem;
-		overflow: hidden;
-		opacity: 0%;
-		cursor: pointer;
-		z-index: 2;
-	}
-
-	.inner-addon .fa-search {
-		position: absolute;
-		padding: 10px;
-		pointer-events: none;
-	}
-
-	.right-addon .fa-search {
-		right: 0px;
-	}
-}
-
-#search-section {
-	display: grid;
-	grid-template-columns: repeat(1, 1fr);
-	grid-gap: 0;
-	justify-items: center;
-	padding: 0rem 1rem;
-	margin-bottom: 7rem;
-}
-
-#search-img {
-	max-width: 273px;
-	margin-top: 2rem;
 }
 
 #trending-gifos {
@@ -216,4 +143,139 @@ section {
 
 .visible {
 	display: unset;
+}
+
+/*-------------------------Input Barra Search-----------------------------------------------------*/
+
+input {
+	font-family: $font-family-roboto;
+	font-size: $font-size-sxtn;
+	font-weight: 400;
+	padding: 1rem;
+	border: 1px solid $violet;
+	border-radius: 50px;
+	width: 18rem;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	-ms-border-radius: 50px;
+	-o-border-radius: 50px;
+	body.dark-mode-colors & {
+		border: 1px solid $white;
+		background-color: $medium-grey;
+		color: $light-grey;
+	}
+	&:focus {
+		outline: none;
+	}
+	ul li {
+		background-color: $cyan;
+	}
+}
+
+#input-text {
+	position: relative;
+	right: 6%;
+}
+
+#button-search,
+#button-search-nav {
+	position: absolute;
+	left: 15.5rem;
+	top: 0.2rem;
+	width: 3rem;
+	height: 3rem;
+	overflow: hidden;
+	opacity: 0%;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.inner-addon .fa-search {
+	position: absolute;
+	padding: 10px;
+	pointer-events: none;
+}
+
+.right-addon .fa-search {
+	right: 0px;
+}
+
+#search-section {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	grid-gap: 0;
+	justify-items: center;
+	padding: 0rem 1rem;
+	margin-bottom: 7rem;
+}
+
+#search-img {
+	max-width: 273px;
+	margin-top: 2rem;
+}
+
+.inner-addon {
+	position: relative;
+}
+
+.fa-search {
+	margin: 5px;
+	fill: $violet;
+	width: 20px;
+	height: 20px;
+	z-index: 2;
+	left: 85%;
+
+	body.dark-mode-colors & {
+		fill: $white;
+	}
+}
+
+/*-------------------------Input Barra Search FIN-------------------------------------------------*/
+
+/*-----------------------------Input Datalist-----------------------------------------------------*/
+.autocomplete {
+	/*the container must be positioned relative:*/
+	position: relative;
+	display: inline-block;
+	font-family: $font-family-roboto;
+	font-size: $font-size-sxtn;
+	width: 18rem;
+	color: $light-grey;
+}
+
+input[type="text"] {
+	background-color: #f1f1f1;
+	width: 100%;
+}
+
+.autocomplete-items {
+	position: absolute;
+	border: 1px solid $violet;
+	background-color: $white;
+	border-top: none;
+	z-index: 0;
+	width: 111%;
+	/*positiontheautocompleteitemstobethesamewidthasthecontainer:;
+	*/
+	padding: 10% 0;
+	top: 50%;
+	right: -5.9%;
+
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+}
+.autocomplete-items div {
+	padding: 10px;
+	cursor: pointer;
+	background-color: #fff;
+}
+.autocomplete-items div:hover {
+	/*when hovering an item:*/
+	color: $white;
+	background-color: $violet;
+}
+.autocomplete-active {
+	/*when navigating through the items using the arrow keys:*/
+	color: $violet;
 }

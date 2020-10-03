@@ -32,6 +32,12 @@
 		display: none;
 	}
 
+	header nav .nav-box-two {
+		display: flex;
+		align-self: center;
+		display: initial;
+	}
+
 	/*------------------Cards-----------------------------------------------------------------------*/
 
 	.gif-card:hover {
@@ -44,6 +50,9 @@
 		}
 		.gif-giphy {
 			opacity: 50%;
+		}
+		.gif-btn-hover:hover {
+			opacity: 100%;
 		}
 	}
 
@@ -61,6 +70,13 @@
 				height: 174px;
 			}
 		}
+	}
+	#button-search-nav {
+		left: 26.5rem;
+	}
+
+	#search-in-nav .fa-search {
+		left: 26.5rem;
 	}
 }
 
@@ -100,7 +116,7 @@
 				padding: 18px 22px 22px 22px;
 			}
 
-			.nav-box-two {
+			.nav-box-three {
 				padding: 0;
 
 				ul {
@@ -124,7 +140,7 @@
 					}
 
 					li {
-						padding-left: 50px;
+						padding-left: 20px;
 						display: inline-block;
 
 						hr {
@@ -157,6 +173,10 @@
 		}
 	}
 
+	#input-text-nav {
+		width: 21rem;
+	}
+
 	/*---------------Body General-------------------------------------------------------------------*/
 
 	h1 {
@@ -179,6 +199,10 @@
 		p {
 			font-size: $font-size-sxtn;
 		}
+	}
+
+	#search-img {
+		max-width: 340px;
 	}
 
 	/*------------------Cards-----------------------------------------------------------------------*/
@@ -205,6 +229,37 @@
 			grid-template-rows: repeat(3, 1fr);
 			grid-gap: 2rem;
 		}
+	}
+
+	#input-text {
+		width: 34rem;
+		position: relative;
+		right: 50%;
+	}
+
+	#button-search {
+		left: 23.5rem;
+	}
+
+	#search-in-nav .fa-search,
+	#button-search-nav {
+		left: 85%;
+	}
+	.autocomplete .fa-search {
+		left: 130%;
+	}
+
+	.autocomplete-items {
+		position: absolute;
+		border: 1px solid $violet;
+		border-bottom: none;
+		border-top: none;
+		z-index: 9;
+		width: 200%;
+		/*position the autocomplete items to be the same width as the container:*/
+		top: 100%;
+
+		right: -50%;
 	}
 
 	/*-----------------Trending---------------------------------------------------------------------*/
@@ -235,7 +290,6 @@
 
 @media screen and (min-width: 1700px) {
 	/*------------------Search----------------------------------------------------------------------*/
-
 	section {
 		#search-results-container {
 			margin: 0 10%;
@@ -257,5 +311,9 @@
 				object-fit: cover;
 			}
 		}
+	}
+
+	#input-text-nav {
+		width: 25rem;
 	}
 }

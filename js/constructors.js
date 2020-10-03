@@ -3,13 +3,15 @@
 function createElement(elementTag, elementClass) {
 	const element = document.createElement(elementTag);
 	element.className = elementClass;
+
 	return element;
 }
 
-function createImgElement(elementClass, elementSrc, elementAlt) {
+function createImgElement(elementClass, elementSrc, elementAlt, elementID) {
 	const element = createElement("img", elementClass);
 	element.src = elementSrc;
 	element.alt = elementAlt;
+	element.id = elementID;
 	return element;
 }
 
@@ -26,10 +28,16 @@ noResultParagraph.innerHTML = "intenta con otra búsqueda.";
 
 /*---------------Constructors---------------------------------------------------------------------*/
 
-/* Title Search Constructor */
+/* Title Search Constructor Body */
 
 let titleSearchConstructor = () => {
 	titleSearch.innerHTML = userInput.value;
+};
+
+/* Title Search Constructor Nav */
+
+let titleSearchNavConstructor = () => {
+	titleSearch.innerHTML = userInputNav.value;
 };
 
 /* No Results Constructor Activo*/
@@ -82,8 +90,8 @@ function buttonSearchConstructor(container, elementID, elementClass) {
 
 /* Gif Constructor */
 
-function gifConstructor(src, title, user, container) {
-	const gifImage = createImgElement("gif-giphy", src, title);
+function gifConstructor(src, title, user, id, container) {
+	const gifImage = createImgElement("gif-giphy", src, title, id);
 
 	const gifUserP = createElement("p", "gif-username");
 	gifUserP.innerHTML = user;
@@ -98,24 +106,25 @@ function gifConstructor(src, title, user, container) {
 	const gifCard = createElement("div", "gif-card");
 
 	const gifButtonFavouriteImg = createImgElement(
-		"",
+		"gif-btn-hover",
 		"./assets/icon-fav.svg",
 		"gif favourite button"
 	);
 
 	const gifButtonDownloadImg = createImgElement(
-		"",
+		"gif-btn-hover",
 		"./assets/icon-download.svg",
 		"gif download button"
 	);
 
 	const gifButtonMaxImg = createImgElement(
-		"",
+		"gif-btn-hover",
 		"./assets/icon-max-normal.svg",
 		"gif max modal button"
 	);
 
 	gifButtonFavourite.appendChild(gifButtonFavouriteImg);
+
 	gifButtonDownload.appendChild(gifButtonDownloadImg);
 	gifButtonMax.appendChild(gifButtonMaxImg);
 

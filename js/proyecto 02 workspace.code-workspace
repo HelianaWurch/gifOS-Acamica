@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "..\\.."
+		},
+		{
+			"path": "..\\..\\..\\..\\Bloque 01\\Acamica-Proyecto-01-BD\\acamica-project-01"
+		},
+		{
+			"path": "..\\..\\Ejemplo Carousel\\Carousel-JavaScript-master"
+		},
+		{
+			"path": "..\\..\\..\\..\\Resolucion Proyecto 02"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Proyecto 02",
+		"compile-hero.disable-compile-files-on-did-save-code": false
+	}
+}
