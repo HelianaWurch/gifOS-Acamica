@@ -7,14 +7,29 @@ const apiTrending = `${api}trending?&api_key=${apiKey}&limit=25&rating=g`;
 
 /*----------------Cache DOM-----------------------------------------------------------------------*/
 const userInput = document.querySelector("#input-text"); // Detecta el input.
+const searchInpContainer = document.getElementById("input-search-container"); //Detecta el contenedor del Input Search.
 const userInputNav = document.querySelector("#input-text-nav"); // Detecta el input del nav.
+const searchInpNavContainer = document.getElementById("input-nav-container"); //Detecta el contenedor del Input del Nav.
 const searchBtn = document.querySelector("#button-search"); // Detecta el boton.
+const searchBtnContainer = document.querySelector("#button-search-container"); // Detecta el contenedor del boton de busqueda.
+const searchCrossBtn = document.querySelector("#button-search-cross"); // Detecta el boton para borrar busqueda.
+const searchCrossBtnContainer = document.querySelector("#button-cross-container"); // Detecta el contenedor del boton para borrar busqueda.
 const searchBtnNav = document.querySelector("#button-search-nav"); // Detecta el boton del nav.
 const searchInNav = document.getElementById("search-in-nav"); // Detecta el search dentro del nav.
+const searchBtnNavContainer = document.querySelector("#button-search-nav-container"); // Detecta el contenedor del boton de busqueda del nav.
+const searchCrossBtnNavContainer = document.querySelector("#button-cross-nav-container"); // Detecta el contenedor del boton para borrar busqueda.
+const searchCrossBtnNav = document.querySelector("#button-search-nav-cross"); // Detecta el boton para borrar busqueda.
 const searchResults = document.getElementById("search-results-container"); //Detecta el contenedor del Search.
 const searchTitleResults = document.getElementById("search-results-value"); //Detecta el contenedor del titulo Search.
 const searchSeeMoreBtn = document.getElementById("btn-results-seemore"); //Detecta el contenedor del boton Ver Más del Search.
 const favBtn = document.getElementsByClassName("favourite-btn"); //Detecta los botones de favoritos.
+const btnClose = document.querySelector(".close-btn"); //Detecta el boton de close en gifMax.
+const gifMaxContainer = document.getElementById("gif-max"); //Detecta el contenedor del gif en gifMax.
+const gifMaxImg = document.getElementById("gif-max-image"); //Detecta el tag img del modal gifMax.
+const gifMaxDownload = document.getElementById("btn-modal-down"); //Detecta el tag img del modal gifMax.
+const gifMaxFav = document.getElementById("btn-modal-fav"); //Detecta el btn de fav del modal gifMax.
+const gifMaxInfo = document.getElementById("gif-max-info"); //Detecta el contenedor de la información del gif del modal gifMax.
+const favContainer = document.getElementById("favorites-results-container"); //Detecta el contenedor de los gifs favoritos.
 
 /* Trending */
 const trendingResults = document.getElementById("trending-carousel"); //Detecta el carousel de trendings.
@@ -53,15 +68,12 @@ const forApi = (url, container) => {
 		const gifTitle = url[i].title;
 		const gifUser = url[i].username;
 		const gifID = url[i].id;
-		doStuffWithImage(gifUrl, gifTitle, gifUser, gifID, container);
+		const gifUrlID = gifUrl + gifID;
+		gifConstructor(gifUrl, gifTitle, gifUser, gifID, gifUrlID, container);
 	}
 };
 
-function doStuffWithImage(url, title, user, id, container) {
-	gifConstructor(url, title, user, id, container);
-}
-
-/*-----Promesas de si hay o no resultados---------------------------------------------*/
+/*-----Promesas de si hay o no resultados---------------------------------------------------------*/
 
 /* Promesa Search */
 

@@ -94,12 +94,14 @@ section {
 	color: $cyan;
 }
 
-#search-results-container {
+#search-results-container,
+#favorites-results-container {
 	overflow: auto;
 	overflow-y: hidden;
 }
 
-#btn-results-seemore {
+#btn-results-seemore,
+#btn-results-grabar {
 	display: flex;
 	justify-content: center;
 	flex-flow: column-reverse;
@@ -127,14 +129,34 @@ section {
 	}
 }
 
-.no-result-p {
+.no-p {
 	position: relative;
-	top: -3rem;
 	font-weight: 700;
 	font-size: $font-size-twtw;
 	margin-bottom: 2rem;
 	color: $cyan;
+}
+
+.no-result-p {
+	top: -3rem;
 	display: none;
+}
+
+.no-favs-p {
+	top: 5rem;
+	max-width: 28rem;
+	margin: 0 auto;
+}
+
+.no-favs-img {
+	position: relative;
+	top: -10rem;
+}
+
+.gif-btn-active {
+	position: absolute;
+	left: 0.85rem;
+	width: 16px;
 }
 
 .hidden {
@@ -145,22 +167,60 @@ section {
 	display: unset;
 }
 
+.ceroopacity {
+	opacity: 0%;
+}
+
+.heart-active-position {
+	position: relative;
+	top: -1.7rem;
+}
+
+.fullopacity {
+	opacity: 100%;
+}
 /*-------------------------Input Barra Search-----------------------------------------------------*/
+
+#input-nav-container {
+	left: -15%;
+	width: 22rem;
+}
+
+#input-text-nav {
+	position: relative;
+	left: 10%;
+	width: 70%;
+}
+
+.input-search-container {
+	right: 7%;
+	width: 18rem;
+}
+
+.input-container {
+	position: relative;
+	border: 1px solid $violet;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	-ms-border-radius: 50px;
+	-o-border-radius: 50px;
+	padding: 1rem;
+	z-index: 1;
+
+	body.dark-mode-colors & {
+		border: 1px solid $white;
+	}
+}
 
 input {
 	font-family: $font-family-roboto;
 	font-size: $font-size-sxtn;
 	font-weight: 400;
-	padding: 1rem;
-	border: 1px solid $violet;
-	border-radius: 50px;
-	width: 18rem;
-	-webkit-border-radius: 50px;
-	-moz-border-radius: 50px;
-	-ms-border-radius: 50px;
-	-o-border-radius: 50px;
+	padding: 0 2%;
+	border: none;
+	z-index: 5;
 	body.dark-mode-colors & {
-		border: 1px solid $white;
 		background-color: $medium-grey;
 		color: $light-grey;
 	}
@@ -173,12 +233,26 @@ input {
 }
 
 #input-text {
+	padding: 0 3rem;
+	width: 65%;
 	position: relative;
-	right: 6%;
+}
+
+#button-search-nav-cross {
+	position: absolute;
+	left: 18rem;
+	top: 0.2rem;
+	width: 3rem;
+	height: 3rem;
+	overflow: hidden;
+	opacity: 0%;
+	cursor: pointer;
+	z-index: 2;
 }
 
 #button-search,
-#button-search-nav {
+#button-search-nav,
+#button-search-cross {
 	position: absolute;
 	left: 15.5rem;
 	top: 0.2rem;
@@ -233,9 +307,8 @@ input {
 
 /*-------------------------Input Barra Search FIN-------------------------------------------------*/
 
-/*-----------------------------Input Datalist-----------------------------------------------------*/
+/*-----------------------------Input Suggestions--------------------------------------------------*/
 .autocomplete {
-	/*the container must be positioned relative:*/
 	position: relative;
 	display: inline-block;
 	font-family: $font-family-roboto;
@@ -244,38 +317,161 @@ input {
 	color: $light-grey;
 }
 
-input[type="text"] {
-	background-color: #f1f1f1;
-	width: 100%;
-}
-
 .autocomplete-items {
 	position: absolute;
 	border: 1px solid $violet;
 	background-color: $white;
 	border-top: none;
-	z-index: 0;
-	width: 111%;
-	/*positiontheautocompleteitemstobethesamewidthasthecontainer:;
-	*/
-	padding: 10% 0;
+	width: 100%;
+	padding: 5% 0;
 	top: 50%;
-	right: -5.9%;
-
+	right: -0.25%;
 	border-bottom-left-radius: 25px;
 	border-bottom-right-radius: 25px;
 }
+
+header nav .autocomplete-items {
+	z-index: -1;
+}
+
 .autocomplete-items div {
-	padding: 10px;
+	padding: 0.4rem;
 	cursor: pointer;
 	background-color: #fff;
 }
-.autocomplete-items div:hover {
-	/*when hovering an item:*/
-	color: $white;
-	background-color: $violet;
-}
+
 .autocomplete-active {
-	/*when navigating through the items using the arrow keys:*/
 	color: $violet;
+}
+
+.autocomplete-element {
+	display: flex;
+	& :hover {
+		width: 100%;
+		color: $white;
+		background-color: $violet;
+	}
+}
+
+.autocomplete-word {
+	width: 40%;
+}
+
+.autocomplete-img {
+	width: 1rem;
+	margin: 0 1rem;
+}
+
+.autocomplete-hr {
+	margin: 0 2rem;
+	border-top: 1px solid $light-grey;
+}
+
+.cross-search {
+	margin-top: 0.4rem;
+}
+
+.switch-position {
+	position: relative;
+	right: 90%;
+}
+
+.original-position {
+	position: initial;
+	right: auto;
+}
+
+/*----------------------Favoritos & Mis GIFOS-----------------------------------------------------*/
+
+#favoritos-heart,
+#gifos-smile {
+	display: flex;
+	justify-content: center;
+	flex-flow: row wrap;
+	img {
+		width: 2rem;
+	}
+}
+
+/*----------------------Crear GIFOS---------------------------------------------------------------*/
+
+#cam-crear-gifos {
+	margin: 1rem 0;
+	flex-flow: column wrap;
+	align-items: center;
+}
+
+#cam-box-container {
+	border: 1px solid $violet;
+	width: 20rem;
+	height: 14.3rem;
+}
+
+#cam-status {
+	width: 43rem;
+}
+
+#cam-steps-nums {
+	margin: 1rem 2rem;
+	svg {
+		margin: 0 1rem;
+	}
+}
+
+#cam-line {
+	width: 10rem;
+	border: 4px solid $violet;
+	border-radius: 5rem;
+	-webkit-border-radius: 5rem;
+	-moz-border-radius: 5rem;
+	-ms-border-radius: 5rem;
+	-o-border-radius: 5rem;
+}
+
+#btn-results-grabar {
+	margin: 1rem 0;
+}
+
+#cam-camicon {
+	position: relative;
+	top: 10rem;
+	left: 2rem;
+	width: 50%;
+}
+
+#cam-lighticon {
+	position: relative;
+	opacity: 70%;
+	left: 2rem;
+	top: 10.4rem;
+	width: 45%;
+}
+
+#cam-icon {
+	width: 100%;
+}
+
+.cam-container {
+	display: none;
+}
+
+#cam-filmicon {
+	position: relative;
+	top: 26rem;
+	left: -2.5rem;
+	opacity: 70%;
+}
+
+#cam-cintone {
+	position: relative;
+	top: 13rem;
+	left: 1.2rem;
+	width: 25%;
+}
+
+#cam-cinttwo {
+	position: relative;
+	top: 13rem;
+	left: 1rem;
+	width: 35%;
 }

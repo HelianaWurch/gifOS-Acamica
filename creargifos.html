@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<!--Estilos y librerias-->
+		<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+		<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+
+		<link rel="shortcut icon" href="./assets/logo-desktop-modo-noc.svg" />
+		<title>GIFOS</title>
+	</head>
+
+	<body>
+		<!--Header - Nav-->
+		<header>
+			<nav>
+				<div class="nav-box-one">
+					<a href="./index.html"><img class="nav-logo" src="./assets/logo-desktop.svg" alt="logo" /></a>
+				</div>
+
+				<div class="nav-box-three">
+					<input type="checkbox" id="checkbox" />
+					<label for="checkbox"></label>
+					<span></span>
+					<span></span>
+					<span></span>
+
+					<ul id="nav-ul">
+						<li><a id="nocturno" href="#" onclick="darkMode()">Modo Nocturno</a></li>
+						<li>
+							<hr />
+						</li>
+						<li><a href="./favoritos.html">Favoritos</a></li>
+						<li>
+							<hr />
+						</li>
+						<li><a href="./misgifos.html">Mis GIFOS</a></li>
+						<li>
+							<hr />
+						</li>
+						<li>
+							<a id="nav-creargifos-link" href="./creargifos.html">Crear Gifos</a>
+							<a id="nav-creargifos-btn" href="./creargifos.html">
+								<img class="crear-gifos" src="./assets/button-crear-gifo.svg" alt="crear gifos" />
+								<img class="crear-gifos-hover" src="./assets/CTA-crear-gifo-hover.svg" alt="crear gifos" />
+							</a>
+						</li>
+						<li>
+							<hr />
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+
+		<!--Background-->
+
+		<!-- <div>
+			<div id="bg-icon-one">
+				<img id="cam-camicon" src="assets/element-camara.svg" alt="movie img" />
+				<img id="cam-lighticon" src="assets/element-luz-camara.svg" alt="movie light img" />
+			</div>
+
+			 <div id="cam-filmicon">
+					<img src="assets/pelicula.svg" alt="movie film img" />
+				</div> -->
+		<!-- </div>  -->
+
+		<!--Cam-->
+		<section class="disp-flex-center">
+			<div class="cam-container">
+				<div id="cam-icon">
+					<img id="cam-cintone" src="assets/element_cinta1.svg" alt="movie img" />
+					<img id="cam-cinttwo" src="assets/element_cinta2.svg" alt="movie img" />
+					<img id="cam-camicon" src="assets/element-camara.svg" alt="movie img" />
+					<img id="cam-lighticon" src="assets/element-luz-camara.svg" alt="movie light img" />
+				</div>
+			</div>
+			<div id="cam-crear-gifos" class="disp-flex-center">
+				<div id="cam-box-container"></div>
+				<div id="cam-status" class="disp-flex-center">
+					<div id="cam-steps-nums">
+						<svg
+							width="32px"
+							height="32px"
+							viewBox="0 0 32 32"
+							version="1.1"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+						>
+							<g id="GIFOS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<circle id="Oval-4" stroke="#572EE5" fill-rule="nonzero" cx="16" cy="16" r="15.5"></circle>
+								<text
+									id="1"
+									font-family="Roboto-Medium, Roboto"
+									font-size="18"
+									font-weight="700"
+									fill="#572EE5"
+								>
+									<tspan x="11.3847656" y="22">1</tspan>
+								</text>
+							</g>
+						</svg>
+						<svg
+							width="32px"
+							height="32px"
+							viewBox="0 0 32 32"
+							version="1.1"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+						>
+							<g id="GIFOS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<circle id="Oval-4" stroke="#572EE5" fill-rule="nonzero" cx="16" cy="16" r="15.5"></circle>
+								<text
+									id="2"
+									font-family="Roboto-Medium, Roboto"
+									font-size="18"
+									font-weight="700"
+									fill="#572EE5"
+								>
+									<tspan x="11.3847656" y="22">2</tspan>
+								</text>
+							</g>
+						</svg>
+						<svg
+							width="32px"
+							height="32px"
+							viewBox="0 0 32 32"
+							version="1.1"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+						>
+							<g id="GIFOS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<circle id="Oval-4" stroke="#572EE5" fill-rule="nonzero" cx="16" cy="16" r="15.5"></circle>
+								<text
+									id="3"
+									font-family="Roboto-Medium, Roboto"
+									font-size="18"
+									font-weight="700"
+									fill="#572EE5"
+								>
+									<tspan x="11.3847656" y="22">3</tspan>
+								</text>
+							</g>
+						</svg>
+					</div>
+				</div>
+				<div id="cam-line"></div>
+				<div id="btn-results-grabar">
+					<svg
+						width="127px"
+						height="50px"
+						viewBox="0 0 127 50"
+						version="1.1"
+						xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink"
+					>
+						<g id="GIFOS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							<rect
+								id="Rectangle-3"
+								stroke="#572EE5"
+								x="0.5"
+								y="0.5"
+								width="126"
+								height="49"
+								rx="24.5"
+							></rect>
+							<text
+								id="ver-todos"
+								font-family="Montserrat-Bold, Montserrat"
+								font-size="13"
+								font-weight="bold"
+								fill="#572EE5"
+							>
+								<tspan x="32.839" y="31">GRABAR</tspan>
+							</text>
+						</g>
+					</svg>
+				</div>
+			</div>
+			<div class="cam-container">
+				<img id="cam-filmicon" src="assets/pelicula.svg" alt="movie film img" />
+			</div>
+			<div></div>
+		</section>
+
+		<!--Footer-->
+		<footer id="footer">
+			<div class="social">
+				<div>
+					<p>Compartir en:</p>
+				</div>
+				<div class="social-icons">
+					<a href="https://www.facebook.com" target="_blank">
+						<i class="fab fa-facebook-f"></i>
+					</a>
+					<a href="https://twitter.com" target="_blank">
+						<i class="fab fa-twitter"></i>
+					</a>
+					<a href="https://instagram.com" target="_blank">
+						<i class="fab fa-instagram"></i>
+					</a>
+				</div>
+			</div>
+			<div>
+				<p>© GIFOS 2020 All Rights Reserved.</p>
+			</div>
+		</footer>
+
+		<script src="./js/apifetchsydom.js"></script>
+		<script src="./js/constructors.js"></script>
+		<script src="./js/carousel.js"></script>
+		<script src="./js/darkmode.js"></script>
+		<script src="./js/modal.js"></script>
+	</body>
+</html>
