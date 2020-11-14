@@ -1,9 +1,11 @@
 /*----------Conect & Endpoints--------------------------------------------------------------------*/
 
-const api = "https://api.giphy.com/v1/gifs/";
+const api = "https://api.giphy.com/v1";
 const apiKey = "YWZLzFV5yLHVVxELdCo5Hmj0E7PUyMY8";
-const apiSearch = `${api}search?&api_key=${apiKey}&q=`;
-const apiTrending = `${api}trending?&api_key=${apiKey}&limit=25&rating=g`;
+const apiSearch = `${api}/gifs/search?&api_key=${apiKey}&q=`;
+const apiTrending = `${api}/gifs/trending?&api_key=${apiKey}&limit=25&rating=g`;
+const apiTrendingSuggestions = `${api}/trending/searches?&api_key=${apiKey}`;
+const apiUpload = `https://upload.giphy.com/v1/gifs?${apiKey}`;
 
 /*----------------Cache DOM-----------------------------------------------------------------------*/
 const userInput = document.querySelector("#input-text"); // Detecta el input.
@@ -30,12 +32,27 @@ const gifMaxDownload = document.getElementById("btn-modal-down"); //Detecta el t
 const gifMaxFav = document.getElementById("btn-modal-fav"); //Detecta el btn de fav del modal gifMax.
 const gifMaxInfo = document.getElementById("gif-max-info"); //Detecta el contenedor de la información del gif del modal gifMax.
 const favContainer = document.getElementById("favorites-results-container"); //Detecta el contenedor de los gifs favoritos.
+const camContainer = document.getElementById("cam-box-container"); //Detecta el contenedor de la camara.
+const camStepOne = document.getElementById("cam-step-one"); //Detecta el paso 1 de crear Gifos.
+const camStepTwo = document.getElementById("cam-step-two"); //Detecta el paso 2 de crear Gifos.
+const camStepThree = document.getElementById("cam-step-three"); //Detecta el paso 3 de crear Gifos.
 
 /* Trending */
 const trendingResults = document.getElementById("trending-carousel"); //Detecta el carousel de trendings.
 const trendingLeftBtn = document.getElementById("trending-left-btn"); //Detecta el boton izquierdo.
 const trendingRightBtn = document.getElementById("trending-right-btn"); //Detecta el boton derecho.
+const trendingSuggestionsP = document.getElementById("trending-suggestions"); //Detecta el parrafo de las sugerencias del trending.
 let contador = 0;
+
+/* Crear Gifos */
+const video = document.querySelector("#cam-stream-element");
+const start = document.querySelector("#cam-start-btn");
+const record = document.querySelector("#cam-record-btn");
+const stop = document.querySelector("#cam-stop-btn");
+const upload = document.querySelector("#cam-upload-btn");
+const restart = document.querySelector("#cam-restart");
+const videoSave = document.querySelector("#btn-save-grabar");
+const camTimer = document.querySelector("#cam-timer");
 
 /*-----------------Fetchs-------------------------------------------------------------------------*/
 
@@ -77,7 +94,7 @@ const forApi = (url, container) => {
 
 /* Promesa Search */
 
-function giphySearch(searchKeyword) {
+const giphySearch = async (searchKeyword) => {
 	contador = 0;
 	apiSearchCall(searchKeyword, 12)
 		.then((jsonData) => {
@@ -88,7 +105,7 @@ function giphySearch(searchKeyword) {
 		.catch((error) => {
 			console.error("api error", error); //catch de error
 		});
-}
+};
 
 //Retorna si hay o no resultado de busqueda.
 function showResults(data, callback, url, parametro) {
@@ -115,24 +132,3 @@ function giphySearchSeeMore(searchKeyword) {
 			console.error("api error", error); //catch de error
 		});
 }
-
-function giphyTrending() {
-	// contador = 0;
-	apiTrendingCall()
-		.then((jsonData) => {
-			console.log(jsonData);
-			trendingResults.innerHTML = "";
-			forApi(jsonData.data, trendingResults);
-		})
-		.catch((error) => {
-			console.error("api error", error);
-		});
-}
-
-/*---------------Ejecutar Endpoints---------------------------------------------------------------*/
-
-/* Ejecutar Endpoint Trending */
-//Llamar al Trending cuando apenas carga la ventana.
-window.onload = function () {
-	giphyTrending();
-};

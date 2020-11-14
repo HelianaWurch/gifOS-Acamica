@@ -1,7 +1,7 @@
 .modal-pause {
 	z-index: 10;
 	position: fixed;
-	top: 0;
+	top: 2rem;
 	left: 0;
 	width: 100vw;
 	height: 100vh; //esta linea cambia altura
@@ -34,6 +34,10 @@
 			-moz-border-radius: 10px;
 			-ms-border-radius: 10px;
 			-o-border-radius: 10px;
+		}
+
+		body.dark-mode-colors & {
+			background-color: $medium-grey;
 		}
 	}
 }
@@ -130,6 +134,9 @@
 			color: $black;
 			position: unset;
 			opacity: 100%;
+			body.dark-mode-colors & {
+				color: $white;
+			}
 		}
 
 		.gif-username {
@@ -137,6 +144,9 @@
 			position: unset;
 			opacity: 100%;
 			line-height: 0;
+			body.dark-mode-colors & {
+				color: $white;
+			}
 		}
 	}
 
@@ -159,10 +169,40 @@
 	.btn {
 		position: unset;
 		background: $white;
+		body.dark-mode-colors & {
+			background: none;
+		}
 	}
 }
 .close-btn {
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
+}
+
+.btn-img-day {
+	display: unset;
+	body.dark-mode-colors & {
+		display: none;
+	}
+}
+
+.close-img-noc {
+	border: none;
+	cursor: pointer;
+	position: relative;
+	top: 0.9rem;
+	right: 1.9rem;
+	display: none;
+	body.dark-mode-colors & {
+		display: unset;
+	}
+}
+
+.btn .btn-img-noc {
+	position: relative;
+	top: -0.7rem;
+	left: -0.7rem;
+	width: 40px;
+	height: 40px;
 }

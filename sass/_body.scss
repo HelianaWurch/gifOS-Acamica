@@ -90,6 +90,22 @@ section {
 	}
 }
 
+#trending-suggestions {
+	display: flex;
+}
+
+.trending-suggest-p {
+	padding: 0 3px;
+	cursor: pointer;
+	&:hover {
+		font-weight: 700;
+	}
+}
+
+.trending-suggest-space {
+	padding: 0 5px 0 0;
+}
+
 .color-title {
 	color: $cyan;
 }
@@ -106,6 +122,7 @@ section {
 	justify-content: center;
 	flex-flow: column-reverse;
 	margin-top: 4rem;
+	cursor: pointer;
 }
 
 #see-more-btn {
@@ -328,6 +345,12 @@ input {
 	right: -0.25%;
 	border-bottom-left-radius: 25px;
 	border-bottom-right-radius: 25px;
+	body.dark-mode-colors & {
+		background-color: $medium-grey;
+		border-right: 1px solid $white;
+		border-left: 1px solid $white;
+		border-bottom: 1px solid $white;
+	}
 }
 
 header nav .autocomplete-items {
@@ -338,6 +361,9 @@ header nav .autocomplete-items {
 	padding: 0.4rem;
 	cursor: pointer;
 	background-color: #fff;
+	body.dark-mode-colors & {
+		background-color: $medium-grey;
+	}
 }
 
 .autocomplete-active {
@@ -350,6 +376,10 @@ header nav .autocomplete-items {
 		width: 100%;
 		color: $white;
 		background-color: $violet;
+	}
+	border-right: 1px solid $white;
+	body.dark-mode-colors & {
+		background: $medium-grey;
 	}
 }
 
@@ -402,19 +432,39 @@ header nav .autocomplete-items {
 }
 
 #cam-box-container {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
 	border: 1px solid $violet;
 	width: 20rem;
-	height: 14.3rem;
+	height: 11.4rem;
+	margin-top: 2rem;
+	body.dark-mode-colors & {
+		border: 1px solid $white;
+	}
+	h2 {
+		margin-top: -40%;
+	}
 }
 
 #cam-status {
-	width: 43rem;
+	width: 100%;
 }
 
 #cam-steps-nums {
 	margin: 1rem 2rem;
+
 	svg {
 		margin: 0 1rem;
+	}
+}
+
+#cam-steps-nums {
+	text {
+		fill: $violet;
+		body.dark-mode-colors & {
+			fill: $white;
+		}
 	}
 }
 
@@ -426,6 +476,9 @@ header nav .autocomplete-items {
 	-moz-border-radius: 5rem;
 	-ms-border-radius: 5rem;
 	-o-border-radius: 5rem;
+	body.dark-mode-colors & {
+		border: 4px solid $white;
+	}
 }
 
 #btn-results-grabar {
@@ -451,6 +504,10 @@ header nav .autocomplete-items {
 	width: 100%;
 }
 
+#cam-stream-element {
+	margin-top: -46.5%;
+}
+
 .cam-container {
 	display: none;
 }
@@ -474,4 +531,70 @@ header nav .autocomplete-items {
 	top: 13rem;
 	left: 1rem;
 	width: 35%;
+}
+
+#cam-steps-nums .svg-step {
+	fill: $violet;
+	text {
+		fill: white;
+		body.dark-mode-colors & {
+			fill: $medium-grey;
+		}
+	}
+	body.dark-mode-colors & {
+		fill: $white;
+	}
+}
+
+.cam-btn {
+	color: $violet;
+	font-family: $font-family-montserrat;
+	font-weight: 700;
+	background-color: $white;
+	cursor: pointer;
+	body.dark-mode-colors & {
+		color: $white;
+		background-color: $medium-grey;
+	}
+}
+
+.cam-border-btn {
+	border: 1px solid $violet;
+	border-radius: 25px;
+	padding: 1rem;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	-ms-border-radius: 25px;
+	-o-border-radius: 25px;
+	body.dark-mode-colors & {
+		border: 1px solid $white;
+	}
+}
+
+#cam-restart {
+	padding: 0;
+	border: none;
+	&:hover {
+		border-bottom: 0.2rem solid $cyan;
+	}
+}
+
+#cam-restart-container {
+	position: relative;
+	top: 2rem;
+	right: 0rem;
+}
+
+#cam-timer {
+	color: $violet;
+	font-family: $font-family-montserrat;
+	font-weight: 700;
+	position: relative;
+	top: -1rem;
+	right: 0rem;
+
+	// right: -20rem;
+	body.dark-mode-colors & {
+		color: $white;
+	}
 }

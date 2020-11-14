@@ -434,3 +434,79 @@ function autocomplete(inp, arr) {
 }
 
 autocomplete(document.getElementById("input-text"), countries);
+
+/* Crear Gifos */
+
+start.addEventListener("click", function () {
+	camVisualElements(2);
+	if (navigator.mediaDevices === undefined) {
+		navigator.mediaDevices = {};
+		navigator.mediaDevices.getUserMedia = function (constraintObj) {
+			let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+			if (!getUserMedia) {
+				return Promise.reject(new Error("getUserMedia is not implemented in this browser"));
+			}
+			return new Promise(function (resolve, reject) {
+				getUserMedia.call(navigator, constraintObj, resolve, reject);
+			});
+		};
+	} else {
+		navigator.mediaDevices
+			.enumerateDevices()
+			.then((devices) => {
+				devices.forEach((device) => {
+					console.log(device.kind.toUpperCase(), device.label);
+					hiddenElement(start);
+				});
+			})
+			.catch((err) => {
+				console.log(err.name, err.message);
+			});
+	}
+
+	navigator.mediaDevices
+		.getUserMedia(constraintObj)
+		.then(function (mediaStreamObj) {
+			camVisualElements(3);
+
+			if ("srcObject" in video) {
+				video.srcObject = mediaStreamObj;
+			} else {
+				video.src = window.URL.createObjectURL(mediaStreamObj);
+			}
+
+			video.onloadedmetadata = function (e) {
+				video.play();
+			};
+
+			let mediaRecorder = new MediaRecorder(mediaStreamObj);
+
+			record.addEventListener("click", (e) => {
+				mediaRecorder.start();
+				camVisualElements(4);
+
+				console.log(mediaRecorder.state);
+			});
+
+			stop.addEventListener("click", (e) => {
+				mediaRecorder.stop();
+				camVisualElements(5);
+
+				console.log(mediaRecorder.state);
+			});
+
+			mediaRecorder.ondataavailable = function (e) {
+				chunks.push(e.data);
+			};
+			mediaRecorder.onstop = (e) => {
+				let blob = new Blob(chunks, { type: "video/mp4;" });
+				chunks = [];
+
+				let videoURL = window.URL.createObjectURL(blob);
+				videoSave.src = videoURL;
+			};
+		})
+		.catch(function (err) {
+			console.log(err.name, err.message);
+		});
+});

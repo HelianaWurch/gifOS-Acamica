@@ -28,6 +28,9 @@
 	padding: 10px 10px 8px 10px;
 	border: 1px solid $violet;
 	cursor: pointer;
+	body.dark-mode-colors & {
+		border: 1px solid $white;
+	}
 }
 
 .btn img {
@@ -67,6 +70,7 @@
 		width: 243px;
 		height: 187px;
 	}
+
 	.gif-giphy {
 		scroll-snap-type: x mandatory;
 		width: 243px;

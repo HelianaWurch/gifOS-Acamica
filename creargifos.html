@@ -55,19 +55,6 @@
 			</nav>
 		</header>
 
-		<!--Background-->
-
-		<!-- <div>
-			<div id="bg-icon-one">
-				<img id="cam-camicon" src="assets/element-camara.svg" alt="movie img" />
-				<img id="cam-lighticon" src="assets/element-luz-camara.svg" alt="movie light img" />
-			</div>
-
-			 <div id="cam-filmicon">
-					<img src="assets/pelicula.svg" alt="movie film img" />
-				</div> -->
-		<!-- </div>  -->
-
 		<!--Cam-->
 		<section class="disp-flex-center">
 			<div class="cam-container">
@@ -79,7 +66,9 @@
 				</div>
 			</div>
 			<div id="cam-crear-gifos" class="disp-flex-center">
-				<div id="cam-box-container"></div>
+				<div id="cam-box-container">
+					<video autoplay="true" id="cam-stream-element"></video>
+				</div>
 				<div id="cam-status" class="disp-flex-center">
 					<div id="cam-steps-nums">
 						<svg
@@ -90,7 +79,7 @@
 							xmlns="http://www.w3.org/2000/svg"
 							xmlns:xlink="http://www.w3.org/1999/xlink"
 						>
-							<g id="GIFOS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							<g id="cam-step-one" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 								<circle id="Oval-4" stroke="#572EE5" fill-rule="nonzero" cx="16" cy="16" r="15.5"></circle>
 								<text
 									id="1"
@@ -111,7 +100,7 @@
 							xmlns="http://www.w3.org/2000/svg"
 							xmlns:xlink="http://www.w3.org/1999/xlink"
 						>
-							<g id="GIFOS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							<g id="cam-step-two" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 								<circle id="Oval-4" stroke="#572EE5" fill-rule="nonzero" cx="16" cy="16" r="15.5"></circle>
 								<text
 									id="2"
@@ -132,7 +121,7 @@
 							xmlns="http://www.w3.org/2000/svg"
 							xmlns:xlink="http://www.w3.org/1999/xlink"
 						>
-							<g id="GIFOS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							<g id="cam-step-three" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 								<circle id="Oval-4" stroke="#572EE5" fill-rule="nonzero" cx="16" cy="16" r="15.5"></circle>
 								<text
 									id="3"
@@ -149,40 +138,22 @@
 				</div>
 				<div id="cam-line"></div>
 				<div id="btn-results-grabar">
-					<svg
-						width="127px"
-						height="50px"
-						viewBox="0 0 127 50"
-						version="1.1"
-						xmlns="http://www.w3.org/2000/svg"
-						xmlns:xlink="http://www.w3.org/1999/xlink"
-					>
-						<g id="GIFOS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-							<rect
-								id="Rectangle-3"
-								stroke="#572EE5"
-								x="0.5"
-								y="0.5"
-								width="126"
-								height="49"
-								rx="24.5"
-							></rect>
-							<text
-								id="ver-todos"
-								font-family="Montserrat-Bold, Montserrat"
-								font-size="13"
-								font-weight="bold"
-								fill="#572EE5"
-							>
-								<tspan x="32.839" y="31">GRABAR</tspan>
-							</text>
-						</g>
-					</svg>
+					<button id="cam-start-btn" class="cam-btn cam-border-btn">COMENZAR</button>
+					<button id="cam-record-btn" class="cam-btn cam-border-btn">GRABAR</button>
+					<button id="cam-stop-btn" class="cam-btn cam-border-btn">FINALIZAR</button>
+					<button id="cam-upload-btn" class="cam-btn cam-border-btn">SUBIR GIFO</button>
 				</div>
+				<div id="cam-restart-container">
+					<button id="cam-restart" class="cam-btn">REPETIR CAPTURA</button>
+					<p id="cam-timer">05:00:30</p>
+				</div>
+				<!-- <video id="btn-save-grabar" controls></video> -->
+				<!-- <canvas id="canvas" width="854" height="480"></canvas> -->
 			</div>
 			<div class="cam-container">
 				<img id="cam-filmicon" src="assets/pelicula.svg" alt="movie film img" />
 			</div>
+
 			<div></div>
 		</section>
 
@@ -209,10 +180,10 @@
 			</div>
 		</footer>
 
+		<script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
 		<script src="./js/apifetchsydom.js"></script>
 		<script src="./js/constructors.js"></script>
-		<script src="./js/carousel.js"></script>
+		<script src="./js/creategifos.js"></script>
 		<script src="./js/darkmode.js"></script>
-		<script src="./js/modal.js"></script>
 	</body>
 </html>

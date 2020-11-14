@@ -9,10 +9,21 @@
 		border: 1px solid $violet;
 		width: 43rem;
 		height: 24.3rem;
+		h2 {
+			margin-top: 4%;
+		}
+	}
+
+	#cam-stream-element {
+		margin-top: -6.5%;
 	}
 
 	#cam-line {
 		width: 40rem;
+	}
+	#cam-restart-container {
+		top: -8.5rem;
+		right: -15rem;
 	}
 
 	/*------------------Carousel--------------------------------------------------------------------*/
@@ -189,6 +200,12 @@
 		top: 13rem;
 		left: 1rem;
 		width: 35%;
+	}
+
+	#cam-box-container {
+		h2 {
+			margin-top: -2%;
+		}
 	}
 
 	/*------------------Carousel--------------------------------------------------------------------*/
@@ -403,10 +420,17 @@
 
 @media screen and (min-width: 1700px) {
 	/*----------------------Crear GIFOS---------------------------------------------------------------*/
+	#cam-restart-container {
+		top: -8.4rem;
+		right: -20rem;
+	}
 
 	#cam-box-container {
-		width: 59rem;
-		height: 35.75rem;
+		width: 63.375rem;
+		height: 35rem;
+		h2 {
+			margin-top: -1%;
+		}
 	}
 
 	#cam-status {
@@ -437,6 +461,10 @@
 	#cam-cinttwo {
 		top: 14rem;
 		left: 7rem;
+	}
+
+	#cam-stream-element {
+		margin-top: 4%;
 	}
 
 	/*------------------Search----------------------------------------------------------------------*/

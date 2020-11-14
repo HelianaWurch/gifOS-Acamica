@@ -157,8 +157,9 @@
 					</div>
 				</div>
 			</form>
+
 			<h4>Trending:</h4>
-			<p>Reactions, Entertainment, Sports, Stickers, Artists</p>
+			<div id="trending-suggestions"></div>
 		</section>
 
 		<!-- Resultado de busqueda -->
@@ -226,17 +227,24 @@
 					<div class="gif-max-modal">
 						<div class="close">
 							<button class="img-btn close-btn">
-								<img src="./assets/button-close.svg" alt="button close" />
+								<img class="btn-img-day" src="./assets/button-close.svg" alt="button close" />
+								<img class="close-img-noc" src="./assets/Button-close-modo-noc.svg" alt="button close" />
 							</button>
 						</div>
 
 						<div class="left">
-							<button class="btn left-btn"><img src="./assets/button-left.svg" alt="" /></button>
+							<button class="btn left-btn">
+								<img class="btn-img-day" src="./assets/button-left.svg" alt="" />
+								<img class="btn-img-noc" src="./assets/button-slider-left-md-noct.svg" alt="" />
+							</button>
 						</div>
 
 						<div id="gif-max" class="gif-image"><img id="gif-max-image" class="gif-giphy" src="" /></div>
 						<div class="right">
-							<button class="btn right-btn"><img src="./assets/button-right.svg" alt="" /></button>
+							<button class="btn right-btn">
+								<img class="btn-img-day" src="./assets/button-right.svg" alt="" />
+								<img class="btn-img-noc" src="./assets/button-slider-right-md-noct.svg" alt="" />
+							</button>
 						</div>
 						<div id="gif-max-info" class="gif-info"></div>
 						<div class="gif-buttons">
@@ -254,9 +262,10 @@
 
 		<script src="./js/apifetchsydom.js"></script>
 		<script src="./js/constructors.js"></script>
+		<script src="./js/modal.js"></script>
 		<script src="./js/search-nav.js"></script>
 		<script src="./js/search.js"></script>
-		<script src="./js/carousel.js"></script>
+		<script src="./js/trending.js"></script>
 		<script src="./js/darkmode.js"></script>
 	</body>
 </html>

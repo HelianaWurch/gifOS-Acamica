@@ -31,15 +31,13 @@ const noFavsImg = createImgElement("no-favs-img", "./assets/icon-fav-sin-conteni
 const noFavsParagraph = createElement("p", "no-p no-favs-p");
 noFavsParagraph.innerHTML = "¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!";
 
-const myFavs = localStorage.getItem("mis-gifs-favoritos");
-
 const hiddenElement = (element) => {
 	element.classList.contains("hidden")
 		? element.classList.remove("hidden")
 		: element.classList.toggle("hidden");
 };
 
-const visibleFavHeart = (element) => {
+const visibleOpacityElement = (element) => {
 	element.classList.contains("ceroopacity")
 		? element.classList.remove("ceroopacity") && element.classList.toggle("fullopacity")
 		: element.classList.toggle("ceroopacity") && element.classList.remove("fullopacity");
@@ -193,74 +191,6 @@ function gifConstructor(src, title, user, id, srcid, container) {
 		gifButtonFavourite.appendChild(gifButtonFavouriteImgActive);
 	}
 }
-
-/* Modal */
-
-const toggleModal = () => {
-	modal.classList.toggle("modal-active")
-		? modal.classList.remove("modal-active") + modal.classList.toggle("modal-inactive")
-		: modal.classList.toggle("modal-active") + modal.classList.remove("modal-inactive");
-};
-
-const gifButtonMaxFavouriteImgActiveTwo = createImgElement(
-	"ceroopacity heart-active-position",
-	"./assets/icon-fav-active.svg",
-	"gif favourite active button",
-	"fav-active"
-);
-
-const gifButtonMaxFavouriteImgActive = createImgElement(
-	"",
-	"./assets/icon-fav-active.svg",
-	"gif favourite active button",
-	"fav-active"
-);
-
-const gifButtonMaxFavouriteImg = createImgElement(
-	"",
-	"./assets/icon-fav.svg",
-	"gif favourite button"
-);
-
-gifMaxFav.appendChild(gifButtonMaxFavouriteImgActiveTwo);
-
-const gifMaxPlay = (btn, src, title, user, id, srcid) => {
-	const gifMaxUserP = createElement("p", "gif-username");
-	gifMaxUserP.innerHTML = user;
-
-	const gifMaxTitleP = createElement("p", "gif-title");
-	gifMaxTitleP.innerHTML = title;
-
-	btn.onclick = function () {
-		gifMaxImg.setAttribute("src", srcid);
-		gifDownload(gifMaxDownload, title, user, srcid);
-		gifCloseBtn(btnClose, gifMaxImg, gifMaxUserP, gifMaxTitleP);
-		gifFavorite(gifMaxFav, src, title, user, id, srcid);
-
-		gifMaxInfo.appendChild(gifMaxUserP);
-		gifMaxInfo.appendChild(gifMaxTitleP);
-
-		if (localStorage["favoritos"] == undefined) {
-			visibleFavHeart(gifButtonMaxFavouriteImg);
-		} else if (localStorage["favoritos"].indexOf(id) == -1) {
-			visibleFavHeart(gifButtonMaxFavouriteImg);
-		} else {
-			visibleFavHeart(gifButtonMaxFavouriteImgActiveTwo);
-		}
-	};
-};
-
-gifMaxFav.onclick = function () {
-	visibleFavHeart(gifButtonMaxFavouriteImgActiveTwo);
-};
-
-const gifCloseBtn = (btn, img, puser, ptitle) => {
-	btn.onclick = function () {
-		img.setAttribute("src", "");
-		puser.innerHTML = "";
-		ptitle.innerHTML = "";
-	};
-};
 
 /* Download Constructor */
 
