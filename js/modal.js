@@ -34,7 +34,7 @@ const gifMaxPlay = (btn, src, title, user, id, srcid) => {
 	gifMaxTitleP.innerHTML = title;
 
 	btn.onclick = function () {
-		gifMaxImg.setAttribute("src", srcid);
+		gifMaxImg.setAttribute("src", src);
 		gifDownload(gifMaxDownload, title, user, srcid);
 		gifCloseBtn(btnClose, gifMaxImg, gifMaxUserP, gifMaxTitleP);
 		gifFavorite(gifMaxFav, src, title, user, id, srcid);

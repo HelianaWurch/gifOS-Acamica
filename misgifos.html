@@ -17,7 +17,10 @@
 		<header>
 			<nav>
 				<div class="nav-box-one">
-					<a href="./index.html"><img class="nav-logo" src="./assets/logo-desktop.svg" alt="logo" /></a>
+					<a href="./index.html"
+						><img class="nav-logo nav-logo-diurno" src="./assets/logo-desktop.svg" alt="logo" />
+						<img class="nav-logo nav-logo-nocturno" src="./assets/logo-desktop-modo-noc.svg" alt="logo"
+					/></a>
 				</div>
 
 				<div class="nav-box-three">
@@ -43,7 +46,16 @@
 						<li>
 							<a id="nav-creargifos-link" href="./creargifos.html">Crear Gifos</a>
 							<a id="nav-creargifos-btn" href="./creargifos.html">
-								<img class="crear-gifos" src="./assets/button-crear-gifo.svg" alt="crear gifos" />
+								<img
+									class="crear-gifos crear-gifos-noc"
+									src="./assets/CTA-crear-gifo-modo-noc.svg"
+									alt="crear gifos"
+								/>
+								<img
+									class="crear-gifos crear-gifos-day"
+									src="./assets/button-crear-gifo.svg"
+									alt="crear gifos"
+								/>
 								<img class="crear-gifos-hover" src="./assets/CTA-crear-gifo-hover.svg" alt="crear gifos" />
 							</a>
 						</li>
@@ -55,14 +67,14 @@
 			</nav>
 		</header>
 
-		<section id="favoritos">
-			<div id="gifos-smile"><img src="./assets/icon-mis-gifos.svg" alt="favoritos" /></div>
+		<section id="mis-gifos">
+			<div id="gifos-smile"><img src="./assets/icon-mis-gifos.svg" alt="mis-gifos" /></div>
 			<h2>Mis GIFOS</h2>
 		</section>
-		<section>
-			<div id="search-results-value"><h2 id="titleSearch"></h2></div>
 
-			<div id="favorites-results-container"></div>
+		<!-- Resultado de busqueda -->
+		<section>
+			<div id="gifos-results-container"></div>
 
 			<div id="btn-results-seemore"></div>
 		</section>
@@ -79,14 +91,16 @@
 			<div id="carousel-container" class="disp-flex-center">
 				<div class="left">
 					<button id="trending-left-btn" class="btn left-btn">
-						<img src="./assets/button-left.svg" alt="" />
+						<img class="btn-trend-noc" src="./assets/button-slider-left-md-noct.svg" alt="" />
+						<img class="btn-normal" src="./assets/button-left.svg" alt="" />
 						<img class="btn-hover" src="./assets/button-slider-left-hover.svg" alt="" />
 					</button>
 				</div>
 				<div id="trending-carousel"></div>
 				<div class="right">
 					<button id="trending-right-btn" class="btn right-btn">
-						<img src="./assets/button-right.svg" alt="" />
+						<img class="btn-trend-noc" src="./assets/button-slider-right-md-noct.svg" alt="" />
+						<img class="btn-normal" src="./assets/button-right.svg" alt="" />
 						<img class="btn-hover" src="./assets/button-slider-right-hover.svg" alt="" />
 					</button>
 				</div>
@@ -123,22 +137,31 @@
 					<div class="gif-max-modal">
 						<div class="close">
 							<button class="img-btn close-btn">
-								<img src="./assets/button-close.svg" alt="button close" />
+								<img class="btn-img-day" src="./assets/button-close.svg" alt="button close" />
+								<img class="close-img-noc" src="./assets/Button-close-modo-noc.svg" alt="button close" />
 							</button>
 						</div>
 
 						<div class="left">
-							<button class="btn left-btn"><img src="./assets/button-left.svg" alt="" /></button>
+							<button class="btn left-btn">
+								<img class="btn-img-day" src="./assets/button-left.svg" alt="" />
+								<img class="btn-img-noc" src="./assets/button-slider-left-md-noct.svg" alt="" />
+							</button>
 						</div>
 
-						<div id="gif-max" class="gif-image"><img id="gif-max-image" class="gif-giphy" src="" /></div>
+						<div id="gif-max" class="gif-image">
+							<img id="gif-max-image" class="gif-giphy" src="img" alt="gif-max" />
+						</div>
 						<div class="right">
-							<button class="btn right-btn"><img src="./assets/button-right.svg" alt="" /></button>
+							<button class="btn right-btn">
+								<img class="btn-img-day" src="./assets/button-right.svg" alt="" />
+								<img class="btn-img-noc" src="./assets/button-slider-right-md-noct.svg" alt="" />
+							</button>
 						</div>
 						<div id="gif-max-info" class="gif-info"></div>
 						<div class="gif-buttons">
 							<button id="btn-modal-fav" class="img-btn favourite-btn">
-								<img src="./assets/icon-fav.svg" alt="" />
+								<img src="./assets/icon-fav-hover.svg" alt="" />
 							</button>
 							<button id="btn-modal-down" class="img-btn download-btn">
 								<img src="./assets/icon-download.svg" alt="" />
@@ -154,5 +177,6 @@
 		<script src="./js/modal.js"></script>
 		<script src="./js/trending.js"></script>
 		<script src="./js/darkmode.js"></script>
+		<script src="./js/misgifos.js"></script>
 	</body>
 </html>

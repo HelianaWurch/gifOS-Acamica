@@ -55,6 +55,27 @@
 	}
 }
 
+.btn-normal {
+	display: unset;
+	body.dark-mode-colors & {
+		display: none;
+	}
+}
+
+.btn .btn-trend-noc {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	top: -1px;
+	left: 0px;
+	right: 0px;
+
+	display: none;
+	body.dark-mode-colors & {
+		display: unset;
+	}
+}
+
 /*----------------SEGUNDA VERSIÓN-----------------------------------------------------------------*/
 
 #trending-carousel {

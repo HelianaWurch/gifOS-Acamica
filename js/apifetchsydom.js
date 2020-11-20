@@ -5,7 +5,7 @@ const apiKey = "YWZLzFV5yLHVVxELdCo5Hmj0E7PUyMY8";
 const apiSearch = `${api}/gifs/search?&api_key=${apiKey}&q=`;
 const apiTrending = `${api}/gifs/trending?&api_key=${apiKey}&limit=25&rating=g`;
 const apiTrendingSuggestions = `${api}/trending/searches?&api_key=${apiKey}`;
-const apiUpload = `https://upload.giphy.com/v1/gifs?${apiKey}`;
+const apiUpload = `https://upload.giphy.com/v1/gifs?api_key=${apiKey}`;
 
 /*----------------Cache DOM-----------------------------------------------------------------------*/
 const userInput = document.querySelector("#input-text"); // Detecta el input.
@@ -32,10 +32,6 @@ const gifMaxDownload = document.getElementById("btn-modal-down"); //Detecta el t
 const gifMaxFav = document.getElementById("btn-modal-fav"); //Detecta el btn de fav del modal gifMax.
 const gifMaxInfo = document.getElementById("gif-max-info"); //Detecta el contenedor de la información del gif del modal gifMax.
 const favContainer = document.getElementById("favorites-results-container"); //Detecta el contenedor de los gifs favoritos.
-const camContainer = document.getElementById("cam-box-container"); //Detecta el contenedor de la camara.
-const camStepOne = document.getElementById("cam-step-one"); //Detecta el paso 1 de crear Gifos.
-const camStepTwo = document.getElementById("cam-step-two"); //Detecta el paso 2 de crear Gifos.
-const camStepThree = document.getElementById("cam-step-three"); //Detecta el paso 3 de crear Gifos.
 
 /* Trending */
 const trendingResults = document.getElementById("trending-carousel"); //Detecta el carousel de trendings.
@@ -53,12 +49,20 @@ const upload = document.querySelector("#cam-upload-btn");
 const restart = document.querySelector("#cam-restart");
 const videoSave = document.querySelector("#btn-save-grabar");
 const camTimer = document.querySelector("#cam-timer");
+const camContainer = document.getElementById("cam-box-container"); //Detecta el contenedor de la camara.
+const camVideoContainer = document.getElementById("cam-video-container");
+const camStepOne = document.getElementById("cam-step-one"); //Detecta el paso 1 de crear Gifos.
+const camStepTwo = document.getElementById("cam-step-two"); //Detecta el paso 2 de crear Gifos.
+const camStepThree = document.getElementById("cam-step-three"); //Detecta el paso 3 de crear Gifos.
+const visualEffects = document.getElementById("visual-effects-container");
+/* Mis Gifos */
+const misGifosContainer = document.getElementById("gifos-results-container");
 
 /*-----------------Fetchs-------------------------------------------------------------------------*/
 
 async function apiSearchCall(searchKeyword, cantidad, offset) {
 	const response = await fetch(
-		apiSearch + searchKeyword + "&limit=" + cantidad + "&offset" + offset
+		apiSearch + searchKeyword + "&limit=" + cantidad + "&offset=" + offset
 	);
 	const jsonResponse = await response.json();
 	return jsonResponse;
@@ -72,15 +76,12 @@ async function apiTrendingCall() {
 
 /*--------------Recorridos de Arrays de Endpoints-------------------------------------------------*/
 
-/*ESCRIBIR*/
-
 /* Actualmente llamando a la api un limit default (25), y sólo estas tomando 12;*/
 
 /* Array general */
 
 const forApi = (url, container) => {
 	for (let i = 0; i < url.length; i++) {
-		// const gifUrl = url[i].images.original.url;
 		const gifUrl = url[i].images.downsized_medium.url;
 		const gifTitle = url[i].title;
 		const gifUser = url[i].username;
@@ -96,7 +97,7 @@ const forApi = (url, container) => {
 
 const giphySearch = async (searchKeyword) => {
 	contador = 0;
-	apiSearchCall(searchKeyword, 12)
+	apiSearchCall(searchKeyword, 12, contador)
 		.then((jsonData) => {
 			console.log(jsonData);
 			searchResults.innerHTML = "";
@@ -122,8 +123,8 @@ function showResults(data, callback, url, parametro) {
 /* Promesa Search SeeMore */
 
 function giphySearchSeeMore(searchKeyword) {
-	// contador += 12;
-	apiSearchCall(searchKeyword /*, 12, contador*/)
+	contador += 12;
+	apiSearchCall(searchKeyword, 12, contador)
 		.then((jsonData) => {
 			console.log(jsonData);
 			forApi(jsonData.data, searchResults);

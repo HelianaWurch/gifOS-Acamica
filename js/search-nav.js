@@ -2,24 +2,21 @@
 
 /* Ejecutar Endpoint Search Nav */
 let searchResultNav = (container, searchKeyword) => {
-	giphySearch(userInputNav.value, 0); // Toma lo que escribio el usuario en el input.
+	giphySearch(userInputNav.value, 0);
 	titleSearchNavConstructor(searchTitleResults, userInputNav.value);
 	buttonSearchConstructor(searchSeeMoreBtn, "see-more-btn", "see-more-btn");
 };
 
-searchBtnNav.addEventListener("click", searchResultNav); // Detecta el click en el boton y ejecuta la función contenedora.
+searchBtnNav.addEventListener("click", searchResultNav);
 userInputNav.addEventListener("keypress", function (event) {
 	titleSearchNavConstructor();
 
-	// Hace click en el botón cuando se apreta enter en el userInput
-	// Enter
 	if (event.key === "Enter") {
 		event.preventDefault();
 		searchBtnNav.click();
 	}
 });
 
-/* Hide/Show Search in Nav Scroll */
 const scrollUp = "scroll-up";
 const scrollDown = "scroll-down";
 let lastScroll = 0;
@@ -32,11 +29,9 @@ window.addEventListener("scroll", () => {
 	}
 
 	if (currentScroll > lastScroll && !searchInNav.classList.contains(scrollDown)) {
-		// down
 		searchInNav.classList.remove(scrollUp);
 		searchInNav.classList.add(scrollDown);
 	} else if (currentScroll < lastScroll && searchInNav.classList.contains(scrollDown)) {
-		// up
 		searchInNav.classList.remove(scrollDown);
 		searchInNav.classList.add(scrollUp);
 	}

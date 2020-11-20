@@ -83,6 +83,10 @@ section {
 	}
 }
 
+#trending-suggestions {
+	margin: 0 5%;
+}
+
 #trending-gifos {
 	p {
 		font-size: $font-size-sxtn;
@@ -111,7 +115,8 @@ section {
 }
 
 #search-results-container,
-#favorites-results-container {
+#favorites-results-container,
+#gifos-results-container {
 	overflow: auto;
 	overflow-y: hidden;
 }
@@ -125,10 +130,50 @@ section {
 	cursor: pointer;
 }
 
+#btn-results-grabar button {
+	&:hover {
+		background-color: $violet;
+		color: $white;
+	}
+}
+
 #see-more-btn {
 	background-color: $white;
 	cursor: pointer;
 	border: none;
+	width: auto;
+	body.dark-mode-colors & {
+		background-color: $medium-grey;
+		text {
+			color: $white;
+		}
+	}
+}
+
+#see-more-btn img {
+	&:hover {
+		border-radius: 25px;
+		background-color: $violet;
+		color: $white;
+		-webkit-border-radius: 25px;
+		-moz-border-radius: 25px;
+		-ms-border-radius: 25px;
+		-o-border-radius: 25px;
+	}
+}
+
+.display-noc {
+	display: none;
+	body.dark-mode-colors & {
+		display: unset;
+	}
+}
+
+.display-day {
+	display: unset;
+	body.dark-mode-colors & {
+		display: none;
+	}
 }
 
 .no-result-img {
@@ -165,9 +210,13 @@ section {
 	margin: 0 auto;
 }
 
-.no-favs-img {
+.no-favs-img,
+.no-gifos-img {
 	position: relative;
 	top: -10rem;
+}
+.no-gifos-img {
+	margin-top: 2rem;
 }
 
 .gif-btn-active {
@@ -439,11 +488,15 @@ header nav .autocomplete-items {
 	width: 20rem;
 	height: 11.4rem;
 	margin-top: 2rem;
+
 	body.dark-mode-colors & {
 		border: 1px solid $white;
 	}
 	h2 {
-		margin-top: -40%;
+		margin-top: 10%;
+	}
+	p {
+		display: none;
 	}
 }
 
@@ -481,8 +534,21 @@ header nav .autocomplete-items {
 	}
 }
 
+.cam-background-effect {
+	video {
+		opacity: 60%;
+	}
+	background: rgba(87, 46, 229, 0.45);
+}
+
 #btn-results-grabar {
 	margin: 1rem 0;
+}
+
+.upload-gifo {
+	position: relative;
+	top: -20rem;
+	color: white;
 }
 
 #cam-camicon {
@@ -506,6 +572,7 @@ header nav .autocomplete-items {
 
 #cam-stream-element {
 	margin-top: -46.5%;
+	z-index: -1;
 }
 
 .cam-container {
@@ -531,6 +598,9 @@ header nav .autocomplete-items {
 	top: 13rem;
 	left: 1rem;
 	width: 35%;
+	body.dark-mode-colors & {
+		fill: $medium-grey;
+	}
 }
 
 #cam-steps-nums .svg-step {
@@ -593,8 +663,121 @@ header nav .autocomplete-items {
 	top: -1rem;
 	right: 0rem;
 
-	// right: -20rem;
 	body.dark-mode-colors & {
 		color: $white;
+	}
+}
+
+.box {
+	position: relative;
+	width: 36px;
+	height: 36px;
+	border: 3px solid $cyan;
+	display: none;
+}
+
+.box1 {
+	top: 6rem;
+	left: 10rem;
+	border-bottom: none;
+	border-right: none;
+}
+
+.box2 {
+	top: 3.5rem;
+	left: 69rem;
+	border-bottom: none;
+	border-left: none;
+}
+
+.box3 {
+	top: 32rem;
+	left: 69rem;
+	border-top: none;
+	border-left: none;
+}
+
+.box4 {
+	top: 29.5rem;
+	left: 10rem;
+	border-top: none;
+	border-right: none;
+}
+
+/* DONUT */
+
+@keyframes donut-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+.donut {
+	display: inline-block;
+	position: relative;
+	top: 15rem;
+	left: 39.5rem;
+	border: 4px solid rgba(0, 0, 0, 0.1);
+	border-left-color: #50e3c2;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	animation: donut-spin 1.2s linear infinite;
+}
+
+.check {
+	position: relative;
+	top: 15rem;
+	left: 39.5rem;
+	.checkmark__circle {
+		stroke-dasharray: 166;
+		stroke-dashoffset: 166;
+		stroke-width: 2;
+		stroke-miterlimit: 10;
+		stroke: $cyan;
+		fill: none;
+		animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+	}
+
+	.checkmark {
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		display: block;
+		stroke-width: 2;
+		stroke: #fff;
+		stroke-miterlimit: 10;
+		margin: 10% auto;
+		box-shadow: inset 0px 0px 0px $cyan;
+		animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+	}
+
+	.checkmark__check {
+		transform-origin: 50% 50%;
+		stroke-dasharray: 48;
+		stroke-dashoffset: 48;
+		animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+	}
+
+	@keyframes stroke {
+		100% {
+			stroke-dashoffset: 0;
+		}
+	}
+	@keyframes scale {
+		0%,
+		100% {
+			transform: none;
+		}
+		50% {
+			transform: scale3d(1.1, 1.1, 1);
+		}
+	}
+	@keyframes fill {
+		100% {
+			box-shadow: inset 0px 0px 0px 30px $cyan;
+		}
 	}
 }

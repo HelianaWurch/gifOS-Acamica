@@ -1,7 +1,3 @@
-const videoMaxLength = 120;
-
-let chunks = [];
-
 const crearGifosTitle = createElement("h2", "");
 crearGifosTitle.innerHTML =
 	"Aquí podras <br/> crear tus propios <span class='color-title'> GIFOS </span>";
@@ -11,11 +7,25 @@ crearGifosParagraph.innerHTML =
 	"¡Crea tu GIFO en sólo 3 pasos! <br/> (sólo necesitas una cámara para grabar un video)";
 
 const recordTitle = createElement("h2", "");
-recordTitle.innerHTML = "¿Nos das acceso a tu cámara?";
+recordTitle.innerHTML = "¿Nos das acceso <br/> a tu cámara?";
 
 const recordParagraph = createElement("p", "");
 recordParagraph.innerHTML =
 	"El acceso a tu camara será válido sólo por el tiempo en el que estés creando el GIFO.";
+
+const uploadingTitle = createElement("h2", "upload-gifo");
+uploadingTitle.innerHTML = "Estamos subiendo tu GIFO";
+
+const uploadingSuccessTitle = createElement("h2", "upload-gifo");
+uploadingSuccessTitle.innerHTML = "GIFO subido con éxito";
+
+const gifoDownloadBtn = createElement("button", "gifoDownload");
+
+const donut = createElement("div", "donut");
+
+const check = createElement("div", "check");
+check.innerHTML =
+	"<svg class='checkmark' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'><circle class='checkmark__circle' cx='26' cy='26' r='25' fill='none' /><path class='checkmark__check' fill='none' d='M14.1 27.2l7.1 7.2 16.7-16.8' /></svg>";
 
 const stepElement = (element) => {
 	element.classList.contains("svg-step")
@@ -95,17 +105,18 @@ const camVisualElements = (casevalue) => {
 			hiddenElement(camTimer);
 			camContainer.appendChild(crearGifosTitle);
 			camContainer.appendChild(crearGifosParagraph);
+			visualEffects.appendChild(gifoDownloadBtn);
 			break;
 		case 2:
-			crearGifosTitle.innerHTML = "";
-			crearGifosParagraph.innerHTML = "";
+			camContainer.removeChild(crearGifosParagraph);
+			camContainer.removeChild(crearGifosTitle);
 			camContainer.appendChild(recordTitle);
 			camContainer.appendChild(recordParagraph);
 			stepElement(camStepOne);
 			break;
 		case 3:
-			recordTitle.innerHTML = "";
-			recordParagraph.innerHTML = "";
+			camContainer.removeChild(recordTitle);
+			camContainer.removeChild(recordParagraph);
 			hiddenElement(record);
 			stepElement(camStepOne);
 			stepElement(camStepTwo);
@@ -135,6 +146,17 @@ const camVisualElements = (casevalue) => {
 			hiddenElement(upload);
 			hiddenElement(restart);
 			break;
+		case 8:
+			camContainer.appendChild(uploadingTitle);
+			camContainer.classList.add("cam-background-effect");
+			visualEffects.appendChild(donut);
+			hiddenElement(upload);
+			break;
+		case 9:
+			camContainer.removeChild(uploadingTitle);
+			camContainer.appendChild(uploadingSuccessTitle);
+			visualEffects.removeChild(donut);
+			visualEffects.appendChild(check);
 	}
 };
 
@@ -216,11 +238,17 @@ function getStreamAndRecord() {
 				}, 2000);
 			});
 
-			upload.addEventListener("click", (e) => {
+			upload.addEventListener("click", async function () {
 				camVisualElements(6);
 				let form = new FormData();
 				form.append("file", recorder.getBlob(), "myGifo.gif");
 				console.log(form.get("file"));
+
+				let postMyGif = await postMyGifo(form);
+				console.log(postMyGif.data.id);
+				console.log(postMyGif);
+
+				saveMyGifoLS(postMyGif.data);
 			});
 
 			restart.addEventListener("click", (e) => {
@@ -231,6 +259,26 @@ function getStreamAndRecord() {
 		.catch(function (err) {
 			console.log(err.name, err.message);
 		});
+}
+
+/* Upload Gifo */
+
+async function postMyGifo(file) {
+	try {
+		const postGiphy = {
+			method: "POST",
+			body: file,
+		};
+		console.log(apiUpload);
+		console.log(postGiphy);
+		camVisualElements(8);
+		const response = await fetch(apiUpload, postGiphy);
+		const data = await response.json();
+		camVisualElements(9);
+		return data;
+	} catch (error) {
+		console.log("Fetch Error", error);
+	}
 }
 
 /* Local Storage */
@@ -253,47 +301,27 @@ function saveMyGifosMap() {
 	localStorage.setItem("mis-gifos", JSON.stringify(Array.from(myGifosArray.entries())));
 }
 
-function setMyGifos(key, value) {
-	loadMyGifosMap().set(key, value);
+async function saveMyGifoLS(file) {
+	let datos = {
+		id: file.id,
+		title: file.name,
+		user: "Heliana",
+		src: `https://media.giphy.com/media/${file.id}/giphy.gif`,
+	};
+
+	await datos;
+
+	let gifo = loadMyGifosMap().get(datos.id);
+
+	if (gifo !== undefined) {
+		loadMyGifosMap().delete(datos.id);
+	} else {
+		loadMyGifosMap().set(datos.id, datos);
+	}
+
+	saveMyGifosMap();
+	return datos;
 }
-
-function getMyGifos(key) {
-	loadMyGifosMap().get(key);
-}
-
-/*
-const gifMyGifos = (btn, src, title, user, id, srcid, container, img) => {
-	btn.addEventListener("click", function (e) {
-		// hacemos que no se ejecute el enlace
-		e.preventDefault();
-
-		// leemos los datos clave del producto y los guardamos en un objeto
-		let datos = {
-			id: id,
-			title: title,
-			user: user,
-			src: src,
-			srcid: srcid,
-		};
-
-		let favorito = loadMyFavMap().get(datos.id);
-
-		if (favorito !== undefined) {
-			loadMyFavMap().delete(datos.id);
-		} else {
-			loadMyFavMap().set(datos.id, datos);
-		}
-
-		// guardamos la lista de favoritos
-		saveMyFavMap();
-
-		// leemos los favoritos del localStorage
-		favContainer.innerHTML = "";
-		drawMyFavs();
-	});
-};
-
-*/
 
 window.onload = function () {
 	loadMyGifosMap();

@@ -45,7 +45,6 @@ const setTrendingText = async () => {
 
 	for (let i = 0; i < 5; i++) {
 		trendingSuggestionsP.innerHTML += `<p class="trending-suggest-p"> ${suggest.data[i]} </p> <p class="trending-suggest-space">,</p>`;
-
 		suggest.data[i].value = userInput.value;
 	}
 
@@ -59,12 +58,7 @@ const setTrendingText = async () => {
 	});
 };
 
-/*---------------Ejecutar Endpoints---------------------------------------------------------------*/
-
-/* Ejecutar Endpoint Trending */
-//Llamar al Trending cuando apenas carga la ventana.
 window.onload = function () {
 	giphyTrending();
-	setTrendingText();
 	darkModeCheck();
 };

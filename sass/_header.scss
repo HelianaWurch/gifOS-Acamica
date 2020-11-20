@@ -72,8 +72,36 @@ header {
 			width: 48px;
 		}
 
+		.nav-logo-diurno {
+			display: unset;
+			body.dark-mode-colors & {
+				display: none;
+			}
+		}
+
+		.nav-logo-nocturno {
+			display: none;
+			body.dark-mode-colors & {
+				display: unset;
+			}
+		}
+
 		.nav-box-one {
 			padding: 29px 22px 22px 22px;
+		}
+
+		.crear-gifos-noc {
+			display: none;
+			body.dark-mode-colors & {
+				display: unset;
+			}
+		}
+
+		.crear-gifos-day {
+			display: unset;
+			body.dark-mode-colors & {
+				display: none;
+			}
 		}
 
 		#nav-creargifos-btn {

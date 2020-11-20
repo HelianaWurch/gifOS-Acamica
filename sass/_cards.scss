@@ -1,4 +1,7 @@
-#search-results-container {
+#search-results-container,
+#favorites-results-container,
+#gifos-results-container {
+	margin: 2rem auto;
 	padding: 0 1rem;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);

@@ -75,26 +75,21 @@ function noResultsInactive() {
 }
 
 /* Btn Search SeeMore Constructor */
-
+let seeMoreImgUrl;
 function buttonSearchConstructor(container, elementID, elementClass) {
 	seemoreBtn.id = elementID;
 	seemoreBtn.className = elementClass;
 
-	const seeMoreBtnImg = createImgElement(
-		"see-more-btn-img",
-		"./assets/CTA-ver-mas.svg",
-		"see more gifs button"
-	);
+	const seeMoreBtnImg = createImgElement("see-more-btn-img", seeMoreImgUrl, "see more gifs button");
 
 	seeMoreBtnImg.onmouseover = function () {
 		this.src = "./assets/CTA-ver-mas-hover.svg";
 	};
 
 	seeMoreBtnImg.onmouseout = function () {
-		this.src = "./assets/CTA-ver-mas.svg";
+		this.src = seeMoreImgUrl;
 	};
 
-	// Ejecuta la función que detecta si el boton fue creado después de 5 segundos, para darle tiempo a cargar y poder aplicar el listener.
 	setTimeout(function () {
 		detectBtnSeeMore(seemoreBtn);
 	}, 5000);
@@ -168,9 +163,13 @@ function gifConstructor(src, title, user, id, srcid, container) {
 	container.appendChild(gifCard);
 
 	gifButtonMax.addEventListener("click", toggleModal);
-	gifMaxPlay(gifButtonMax, src, title, user, id, srcid);
+	gifMaxPlay(gifButtonMax, src, title, user, id, srcid, gifCard);
 	btnClose.addEventListener("click", toggleModal);
-	gifDownload(gifButtonDownload, title, user, srcid);
+	gifDownload(gifButtonDownload, title, user, src);
+
+	gifImage.onclick = function () {
+		gifButtonMax.click();
+	};
 
 	gifFavorite(
 		gifButtonFavourite,
@@ -194,10 +193,10 @@ function gifConstructor(src, title, user, id, srcid, container) {
 
 /* Download Constructor */
 
-const gifDownload = (btn, title, user, srcid) => {
+const gifDownload = (btn, title, user, src) => {
 	btn.onclick = async () => {
 		let a = document.createElement("a");
-		let response = await fetch(srcid);
+		let response = await fetch(src);
 		let file = await response.blob();
 		a.download = title + user;
 		a.href = window.URL.createObjectURL(file);
@@ -214,10 +213,8 @@ function loadMyFavMap() {
 	if (myFavoritesGifsArray === undefined) {
 		let tmpFavs = localStorage.getItem("favoritos");
 		if (tmpFavs === null) {
-			// Crea un nuevo mapa vacio
 			myFavoritesGifsArray = new Map();
 		} else {
-			// Crea un mapa y parsea el contenido
 			myFavoritesGifsArray = new Map(JSON.parse(localStorage.getItem("favoritos")));
 		}
 	}
@@ -238,10 +235,8 @@ function getMyFav(key) {
 
 const gifFavorite = (btn, src, title, user, id, srcid, container, img) => {
 	btn.addEventListener("click", function (e) {
-		// hacemos que no se ejecute el enlace
 		e.preventDefault();
 
-		// leemos los datos clave del producto y los guardamos en un objeto
 		let datos = {
 			id: id,
 			title: title,
@@ -258,10 +253,8 @@ const gifFavorite = (btn, src, title, user, id, srcid, container, img) => {
 			loadMyFavMap().set(datos.id, datos);
 		}
 
-		// guardamos la lista de favoritos
 		saveMyFavMap();
 
-		// leemos los favoritos del localStorage
 		favContainer.innerHTML = "";
 		drawMyFavs();
 	});

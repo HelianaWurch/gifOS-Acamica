@@ -9,9 +9,11 @@ const darkModeText = () => {
 	if (nocturno.classList.contains("active")) {
 		document.getElementById("nocturno").innerHTML = "Modo Diurno";
 		localStorage.setItem("dark-mode", "true");
+		seeMoreImgUrl = "./assets/CTA-ver+-modo-noc.svg";
 	} else {
 		document.getElementById("nocturno").innerHTML = "Modo Nocturno";
 		localStorage.setItem("dark-mode", "false");
+		seeMoreImgUrl = "./assets/CTA-ver-mas.svg";
 	}
 };
 

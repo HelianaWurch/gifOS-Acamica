@@ -1,5 +1,31 @@
 @media screen and (min-width: 768px) {
-	/*----------------------Crear GIFOS---------------------------------------------------------------*/
+	/*---------------------------Modal--------------------------------------------------------------*/
+
+	div.gif-max-modal .close {
+		margin-top: 1rem;
+	}
+
+	.gif-max-modal {
+		#gif-max {
+			.gif-giphy {
+				height: 500px;
+			}
+		}
+
+		.right {
+			.right-btn {
+				display: unset;
+			}
+		}
+
+		.left {
+			.left-btn {
+				display: unset;
+			}
+		}
+	}
+
+	/*----------------------Crear GIFOS-------------------------------------------------------------*/
 
 	#cam-crear-gifos {
 		margin: 3rem;
@@ -11,6 +37,9 @@
 		height: 24.3rem;
 		h2 {
 			margin-top: 4%;
+		}
+		p {
+			display: unset;
 		}
 	}
 
@@ -24,6 +53,10 @@
 	#cam-restart-container {
 		top: -8.5rem;
 		right: -15rem;
+	}
+
+	.upload-gifo {
+		top: -80%;
 	}
 
 	/*------------------Carousel--------------------------------------------------------------------*/
@@ -86,7 +119,8 @@
 	/*------------------Search----------------------------------------------------------------------*/
 	section {
 		#search-results-container,
-		#favorites-results-container {
+		#favorites-results-container,
+		#gifos-results-container {
 			margin: 2rem;
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
@@ -179,6 +213,10 @@
 	.cam-container {
 		display: unset;
 		width: 10%;
+	}
+
+	.upload-gifo {
+		top: -70%;
 	}
 
 	#cam-filmicon {
@@ -346,8 +384,9 @@
 	/*------------------Search----------------------------------------------------------------------*/
 	section {
 		#search-results-container,
-		#favorites-results-container {
-			margin: 0 12rem;
+		#favorites-results-container,
+		#gifos-results-container {
+			margin: 4% 10%;
 			display: grid;
 			grid-template-columns: repeat(4, 2fr);
 			grid-template-rows: repeat(3, 1fr);
@@ -440,6 +479,9 @@
 	#cam-line {
 		width: 70rem;
 	}
+	.upload-gifo {
+		top: -50%;
+	}
 
 	#cam-camicon {
 		left: 8rem;
@@ -467,11 +509,16 @@
 		margin-top: 4%;
 	}
 
+	.box {
+		display: inherit;
+	}
+
 	/*------------------Search----------------------------------------------------------------------*/
 	section {
 		#search-results-container,
-		#favorites-results-container {
-			margin: 0 10%;
+		#favorites-results-container,
+		#gifos-results-container {
+			margin: 5% 10%;
 			display: grid;
 			grid-template-columns: repeat(4, 2fr);
 			grid-template-rows: repeat(3, 2fr);

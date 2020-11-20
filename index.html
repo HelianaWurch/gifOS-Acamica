@@ -17,7 +17,10 @@
 		<header>
 			<nav>
 				<div class="nav-box-one">
-					<a href="./index.html"><img class="nav-logo" src="./assets/logo-desktop.svg" alt="logo" /></a>
+					<a href="./index.html"
+						><img class="nav-logo nav-logo-diurno" src="./assets/logo-desktop.svg" alt="logo" />
+						<img class="nav-logo nav-logo-nocturno" src="./assets/logo-desktop-modo-noc.svg" alt="logo"
+					/></a>
 				</div>
 				<div id="search-in-nav" class="nav-box-two">
 					<form autocomplete="off" role="search">
@@ -92,7 +95,16 @@
 						<li>
 							<a id="nav-creargifos-link" href="./creargifos.html">Crear Gifos</a>
 							<a id="nav-creargifos-btn" href="./creargifos.html">
-								<img class="crear-gifos" src="./assets/button-crear-gifo.svg" alt="crear gifos" />
+								<img
+									class="crear-gifos crear-gifos-noc"
+									src="./assets/CTA-crear-gifo-modo-noc.svg"
+									alt="crear gifos"
+								/>
+								<img
+									class="crear-gifos crear-gifos-day"
+									src="./assets/button-crear-gifo.svg"
+									alt="crear gifos"
+								/>
 								<img class="crear-gifos-hover" src="./assets/CTA-crear-gifo-hover.svg" alt="crear gifos" />
 							</a>
 						</li>
@@ -122,7 +134,7 @@
 								<defs>
 									<path
 										d="M8.5 0a8.5 8.5 0 016.677 13.761l4.53 4.532a1 1 0 01-1.414 1.414l-4.532-4.53A8.5 8.5 0 118.5 0zm0 2a6.5 6.5 0 104.548 11.144l.045-.051c.016-.016.033-.032.05-.046A6.5 6.5 0 008.5 2z"
-										id="a"
+										id="b"
 									/>
 								</defs>
 								<use fill-rule="nonzero" xlink:href="#a" />
@@ -138,7 +150,7 @@
 								<defs>
 									<path
 										d="M0.292893219,0.292893219 C0.683417511,-0.0976310729 1.31658249,-0.0976310729 1.70710678,0.292893219 L1.70710678,0.292893219 L7,5.585 L12.2928932,0.292893219 C12.6533772,-0.0675907428 13.2206082,-0.0953202783 13.6128994,0.209704612 L13.7071068,0.292893219 C14.0976311,0.683417511 14.0976311,1.31658249 13.7071068,1.70710678 L13.7071068,1.70710678 L8.415,7 L13.7071068,12.2928932 C14.0675907,12.6533772 14.0953203,13.2206082 13.7902954,13.6128994 L13.7071068,13.7071068 C13.3165825,14.0976311 12.6834175,14.0976311 12.2928932,13.7071068 L12.2928932,13.7071068 L7,8.415 L1.70710678,13.7071068 C1.34662282,14.0675907 0.779391764,14.0953203 0.387100557,13.7902954 L0.292893219,13.7071068 C-0.0976310729,13.3165825 -0.0976310729,12.6834175 0.292893219,12.2928932 L0.292893219,12.2928932 L5.585,7 L0.292893219,1.70710678 C-0.0675907428,1.34662282 -0.0953202783,0.779391764 0.209704612,0.387100557 Z"
-										id="path-1"
+										id="path-2"
 									></path>
 								</defs>
 								<use fill="#4A1EE3" fill-rule="nonzero" xlink:href="#path-1"></use>
@@ -183,14 +195,16 @@
 			<div id="carousel-container" class="disp-flex-center">
 				<div class="left">
 					<button id="trending-left-btn" class="btn left-btn">
-						<img src="./assets/button-left.svg" alt="" />
+						<img class="btn-trend-noc" src="./assets/button-slider-left-md-noct.svg" alt="" />
+						<img class="btn-normal" src="./assets/button-left.svg" alt="" />
 						<img class="btn-hover" src="./assets/button-slider-left-hover.svg" alt="" />
 					</button>
 				</div>
 				<div id="trending-carousel"></div>
 				<div class="right">
 					<button id="trending-right-btn" class="btn right-btn">
-						<img src="./assets/button-right.svg" alt="" />
+						<img class="btn-trend-noc" src="./assets/button-slider-right-md-noct.svg" alt="" />
+						<img class="btn-normal" src="./assets/button-right.svg" alt="" />
 						<img class="btn-hover" src="./assets/button-slider-right-hover.svg" alt="" />
 					</button>
 				</div>
@@ -239,7 +253,9 @@
 							</button>
 						</div>
 
-						<div id="gif-max" class="gif-image"><img id="gif-max-image" class="gif-giphy" src="" /></div>
+						<div id="gif-max" class="gif-image">
+							<img id="gif-max-image" class="gif-giphy" src="img" alt="gif-max" />
+						</div>
 						<div class="right">
 							<button class="btn right-btn">
 								<img class="btn-img-day" src="./assets/button-right.svg" alt="" />
@@ -263,9 +279,9 @@
 		<script src="./js/apifetchsydom.js"></script>
 		<script src="./js/constructors.js"></script>
 		<script src="./js/modal.js"></script>
+		<script src="./js/trending.js"></script>
 		<script src="./js/search-nav.js"></script>
 		<script src="./js/search.js"></script>
-		<script src="./js/trending.js"></script>
 		<script src="./js/darkmode.js"></script>
 	</body>
 </html>
