@@ -1,11 +1,5 @@
 /* Modal */
 
-const toggleModal = () => {
-	modal.classList.toggle("modal-active")
-		? modal.classList.remove("modal-active") + modal.classList.toggle("modal-inactive")
-		: modal.classList.toggle("modal-active") + modal.classList.remove("modal-inactive");
-};
-
 const gifButtonMaxFavouriteImgActiveTwo = createImgElement(
 	"ceroopacity heart-active-position",
 	"./assets/icon-fav-active.svg",

@@ -84,6 +84,9 @@ section {
 }
 
 #trending-suggestions {
+	display: flex;
+	justify-content: center;
+	flex-flow: row wrap;
 	margin: 0 5%;
 }
 
@@ -92,10 +95,6 @@ section {
 		font-size: $font-size-sxtn;
 		line-height: 1.438rem;
 	}
-}
-
-#trending-suggestions {
-	display: flex;
 }
 
 .trending-suggest-p {
@@ -704,6 +703,44 @@ header nav .autocomplete-items {
 	border-right: none;
 }
 
+.cam-down-btn {
+	position: relative;
+	top: 18rem;
+	left: -2rem;
+}
+
+.cam-link-btn {
+	position: relative;
+	top: 15.7rem;
+	left: 2rem;
+}
+
+#visual-effects-container {
+	position: absolute;
+}
+
+#modal-gifo-info {
+	position: relative;
+	top: -20rem;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#gifo-url {
+	display: flex;
+	justify-content: center;
+	p {
+		font-size: 11px;
+	}
+}
+
+.gifo-url-container {
+	border: 2px solid $violet;
+	padding: 0.5rem;
+}
+
 /* DONUT */
 
 @keyframes donut-spin {
@@ -717,8 +754,8 @@ header nav .autocomplete-items {
 .donut {
 	display: inline-block;
 	position: relative;
-	top: 15rem;
-	left: 39.5rem;
+	top: 8rem;
+	left: 0rem;
 	border: 4px solid rgba(0, 0, 0, 0.1);
 	border-left-color: #50e3c2;
 	border-radius: 50%;
@@ -729,8 +766,8 @@ header nav .autocomplete-items {
 
 .check {
 	position: relative;
-	top: 15rem;
-	left: 39.5rem;
+	top: 8rem;
+	left: 0rem;
 	.checkmark__circle {
 		stroke-dasharray: 166;
 		stroke-dashoffset: 166;

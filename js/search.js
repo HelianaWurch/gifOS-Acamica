@@ -38,8 +38,7 @@ autocomplete(
 	searchBtnContainer,
 	searchCrossBtnContainer,
 	searchCrossBtn,
-	userInput,
-	countries
+	userInput
 );
 
 setTrendingText();

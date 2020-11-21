@@ -19,7 +19,21 @@ uploadingTitle.innerHTML = "Estamos subiendo tu GIFO";
 const uploadingSuccessTitle = createElement("h2", "upload-gifo");
 uploadingSuccessTitle.innerHTML = "GIFO subido con éxito";
 
-const gifoDownloadBtn = createElement("button", "gifoDownload");
+const gifoDownloadBtn = createElement("button", "card-btn download-btn cam-down-btn");
+const gifoDownloadImg = createImgElement(
+	"gif-btn ",
+	"./assets/icon-download.svg",
+	"gif download button"
+);
+gifoDownloadBtn.appendChild(gifoDownloadImg);
+
+const gifoLinkBtn = createElement("button", "card-btn download-btn cam-link-btn");
+const gifoLinkImg = createImgElement(
+	"gif-btn",
+	"./assets/icon-link-normal.svg",
+	"gif download button"
+);
+gifoLinkBtn.appendChild(gifoLinkImg);
 
 const donut = createElement("div", "donut");
 
@@ -33,6 +47,17 @@ const stepElement = (element) => {
 		: element.classList.toggle("svg-step");
 };
 
+gifoLinkBtn.addEventListener("click", toggleModal);
+btnClose.addEventListener("click", toggleModal);
+
+const gifMaxPlay = (btn, src, title, user, id, srcid) => {
+	btn.onclick = function () {
+		console.log("hola");
+	};
+};
+
+gifMaxPlay(gifoLinkBtn);
+
 let isMarch = false;
 let acumularTime = 0;
 
@@ -43,6 +68,7 @@ function timerStart() {
 		isMarch = true;
 	}
 }
+
 function cronometro() {
 	timeActual = new Date();
 	acumularTime = timeActual - timeInicial;
@@ -105,7 +131,6 @@ const camVisualElements = (casevalue) => {
 			hiddenElement(camTimer);
 			camContainer.appendChild(crearGifosTitle);
 			camContainer.appendChild(crearGifosParagraph);
-			visualEffects.appendChild(gifoDownloadBtn);
 			break;
 		case 2:
 			camContainer.removeChild(crearGifosParagraph);
@@ -157,6 +182,9 @@ const camVisualElements = (casevalue) => {
 			camContainer.appendChild(uploadingSuccessTitle);
 			visualEffects.removeChild(donut);
 			visualEffects.appendChild(check);
+			visualEffects.appendChild(gifoDownloadBtn);
+			visualEffects.appendChild(gifoLinkBtn);
+			break;
 	}
 };
 
@@ -242,13 +270,9 @@ function getStreamAndRecord() {
 				camVisualElements(6);
 				let form = new FormData();
 				form.append("file", recorder.getBlob(), "myGifo.gif");
-				console.log(form.get("file"));
-
 				let postMyGif = await postMyGifo(form);
-				console.log(postMyGif.data.id);
-				console.log(postMyGif);
-
 				saveMyGifoLS(postMyGif.data);
+				console.log(postMyGif.data);
 			});
 
 			restart.addEventListener("click", (e) => {
@@ -269,8 +293,6 @@ async function postMyGifo(file) {
 			method: "POST",
 			body: file,
 		};
-		console.log(apiUpload);
-		console.log(postGiphy);
 		camVisualElements(8);
 		const response = await fetch(apiUpload, postGiphy);
 		const data = await response.json();
@@ -320,7 +342,14 @@ async function saveMyGifoLS(file) {
 	}
 
 	saveMyGifosMap();
+	gifDownload(gifoDownloadBtn, datos.name, datos.user, datos.src);
+	gifoShowUrl(datos.src);
 	return datos;
+}
+
+function gifoShowUrl(src) {
+	let gifoUrl = document.getElementById("gifo-url");
+	gifoUrl.innerHTML = `<div class="gifo-url-container"><p class="gifo-url">${src}</p><div>`;
 }
 
 window.onload = function () {

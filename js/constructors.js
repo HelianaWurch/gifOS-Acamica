@@ -277,3 +277,9 @@ function drawMyFavs() {
 		}
 	}
 }
+
+const toggleModal = () => {
+	modal.classList.toggle("modal-active")
+		? modal.classList.remove("modal-active") + modal.classList.toggle("modal-inactive")
+		: modal.classList.toggle("modal-active") + modal.classList.remove("modal-inactive");
+};

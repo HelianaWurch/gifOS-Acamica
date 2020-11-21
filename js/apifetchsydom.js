@@ -6,8 +6,9 @@ const apiSearch = `${api}/gifs/search?&api_key=${apiKey}&q=`;
 const apiTrending = `${api}/gifs/trending?&api_key=${apiKey}&limit=25&rating=g`;
 const apiTrendingSuggestions = `${api}/trending/searches?&api_key=${apiKey}`;
 const apiUpload = `https://upload.giphy.com/v1/gifs?api_key=${apiKey}`;
+const apiAutocomplete = `${api}/gifs/search/tags?&api_key=${apiKey}&q=`;
 
-/*----------------Cache DOM-----------------------------------------------------------------------*/
+/*----------------------DOM-----------------------------------------------------------------------*/
 const userInput = document.querySelector("#input-text"); // Detecta el input.
 const searchInpContainer = document.getElementById("input-search-container"); //Detecta el contenedor del Input Search.
 const userInputNav = document.querySelector("#input-text-nav"); // Detecta el input del nav.
@@ -55,30 +56,46 @@ const camStepOne = document.getElementById("cam-step-one"); //Detecta el paso 1 
 const camStepTwo = document.getElementById("cam-step-two"); //Detecta el paso 2 de crear Gifos.
 const camStepThree = document.getElementById("cam-step-three"); //Detecta el paso 3 de crear Gifos.
 const visualEffects = document.getElementById("visual-effects-container");
+const gifGifoDownload = document.getElementById("gifo-download");
+
 /* Mis Gifos */
 const misGifosContainer = document.getElementById("gifos-results-container");
 
 /*-----------------Fetchs-------------------------------------------------------------------------*/
 
 async function apiSearchCall(searchKeyword, cantidad, offset) {
-	const response = await fetch(
-		apiSearch + searchKeyword + "&limit=" + cantidad + "&offset=" + offset
-	);
-	const jsonResponse = await response.json();
-	return jsonResponse;
+	const url = apiSearch + searchKeyword + "&limit=" + cantidad + "&offset=" + offset;
+	try {
+		const response = await fetch(url);
+		const jsonResponse = await response.json();
+		return jsonResponse;
+	} catch (error) {
+		console.log("Api Search Error", error);
+	}
 }
 
 async function apiTrendingCall() {
-	const response = await fetch(apiTrending);
-	const jsonResponse = await response.json();
-	return jsonResponse;
+	try {
+		const response = await fetch(apiTrending);
+		const jsonResponse = await response.json();
+		return jsonResponse;
+	} catch (error) {
+		console.log("Api Trending Error", error);
+	}
+}
+
+async function apiAutompleteCall(searchKeyword) {
+	const url = apiAutocomplete + searchKeyword;
+	try {
+		const response = await fetch(url);
+		const data = await response.json();
+		return data;
+	} catch (error) {
+		console.log("Api Autocomplete Error", error);
+	}
 }
 
 /*--------------Recorridos de Arrays de Endpoints-------------------------------------------------*/
-
-/* Actualmente llamando a la api un limit default (25), y sólo estas tomando 12;*/
-
-/* Array general */
 
 const forApi = (url, container) => {
 	for (let i = 0; i < url.length; i++) {
@@ -93,8 +110,6 @@ const forApi = (url, container) => {
 
 /*-----Promesas de si hay o no resultados---------------------------------------------------------*/
 
-/* Promesa Search */
-
 const giphySearch = async (searchKeyword) => {
 	contador = 0;
 	apiSearchCall(searchKeyword, 12, contador)
@@ -104,11 +119,10 @@ const giphySearch = async (searchKeyword) => {
 			showResults(jsonData, forApi, jsonData.data, searchResults);
 		})
 		.catch((error) => {
-			console.error("api error", error); //catch de error
+			console.error("api error", error);
 		});
 };
 
-//Retorna si hay o no resultado de busqueda.
 function showResults(data, callback, url, parametro) {
 	if (data.pagination.total_count == 0) {
 		noResultConstructor(searchSeeMoreBtn);
@@ -120,16 +134,13 @@ function showResults(data, callback, url, parametro) {
 	}
 }
 
-/* Promesa Search SeeMore */
-
 function giphySearchSeeMore(searchKeyword) {
 	contador += 12;
 	apiSearchCall(searchKeyword, 12, contador)
 		.then((jsonData) => {
-			console.log(jsonData);
 			forApi(jsonData.data, searchResults);
 		})
 		.catch((error) => {
-			console.error("api error", error); //catch de error
+			console.error("api error", error);
 		});
 }

@@ -59,6 +59,28 @@
 		top: -80%;
 	}
 
+	#gifo-url {
+		p {
+			font-size: 15px;
+		}
+	}
+
+	.donut,
+	.check {
+		top: 18rem;
+		left: 0rem;
+	}
+
+	.cam-down-btn {
+		top: 4.3rem;
+		left: 16rem;
+	}
+
+	.cam-link-btn {
+		top: 2rem;
+		left: 23em;
+	}
+
 	/*------------------Carousel--------------------------------------------------------------------*/
 	#carousel-container {
 		margin: 0rem 5.2rem;
@@ -244,6 +266,11 @@
 		h2 {
 			margin-top: -2%;
 		}
+	}
+
+	.donut,
+	.check {
+		top: 20rem;
 	}
 
 	/*------------------Carousel--------------------------------------------------------------------*/
@@ -511,6 +538,26 @@
 
 	.box {
 		display: inherit;
+	}
+
+	.cam-down-btn {
+		top: -3rem;
+		left: 61rem;
+	}
+
+	.cam-link-btn {
+		top: -5.3rem;
+		left: 63.5rem;
+	}
+
+	.donut,
+	.check {
+		top: 15rem;
+		left: 39.5rem;
+	}
+
+	#visual-effects-container {
+		position: unset;
 	}
 
 	/*------------------Search----------------------------------------------------------------------*/

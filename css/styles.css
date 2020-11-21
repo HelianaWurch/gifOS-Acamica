@@ -240,14 +240,14 @@ section #titleSearch {
   margin-bottom: 2rem; }
 
 #trending-suggestions {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
   margin: 0 5%; }
 
 #trending-gifos p {
   font-size: 1rem;
   line-height: 1.438rem; }
-
-#trending-suggestions {
-  display: flex; }
 
 .trending-suggest-p {
   padding: 0 3px;
@@ -735,6 +735,37 @@ header nav .autocomplete-items {
   border-top: none;
   border-right: none; }
 
+.cam-down-btn {
+  position: relative;
+  top: 18rem;
+  left: -2rem; }
+
+.cam-link-btn {
+  position: relative;
+  top: 15.7rem;
+  left: 2rem; }
+
+#visual-effects-container {
+  position: absolute; }
+
+#modal-gifo-info {
+  position: relative;
+  top: -20rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
+
+#gifo-url {
+  display: flex;
+  justify-content: center; }
+  #gifo-url p {
+    font-size: 11px; }
+
+.gifo-url-container {
+  border: 2px solid #572ee5;
+  padding: 0.5rem; }
+
 /* DONUT */
 @keyframes donut-spin {
   0% {
@@ -745,8 +776,8 @@ header nav .autocomplete-items {
 .donut {
   display: inline-block;
   position: relative;
-  top: 15rem;
-  left: 39.5rem;
+  top: 8rem;
+  left: 0rem;
   border: 4px solid rgba(0, 0, 0, 0.1);
   border-left-color: #50e3c2;
   border-radius: 50%;
@@ -756,8 +787,8 @@ header nav .autocomplete-items {
 
 .check {
   position: relative;
-  top: 15rem;
-  left: 39.5rem; }
+  top: 8rem;
+  left: 0rem; }
   .check .checkmark__circle {
     stroke-dasharray: 166;
     stroke-dashoffset: 166;
@@ -857,6 +888,18 @@ footer {
     right: -15rem; }
   .upload-gifo {
     top: -80%; }
+  #gifo-url p {
+    font-size: 15px; }
+  .donut,
+  .check {
+    top: 18rem;
+    left: 0rem; }
+  .cam-down-btn {
+    top: 4.3rem;
+    left: 16rem; }
+  .cam-link-btn {
+    top: 2rem;
+    left: 23em; }
   /*------------------Carousel--------------------------------------------------------------------*/
   #carousel-container {
     margin: 0rem 5.2rem; }
@@ -980,6 +1023,9 @@ footer {
     width: 35%; }
   #cam-box-container h2 {
     margin-top: -2%; }
+  .donut,
+  .check {
+    top: 20rem; }
   /*------------------Carousel--------------------------------------------------------------------*/
   #trending-carousel .gif-giphy {
     width: 357px;
@@ -1139,6 +1185,18 @@ footer {
     margin-top: 4%; }
   .box {
     display: inherit; }
+  .cam-down-btn {
+    top: -3rem;
+    left: 61rem; }
+  .cam-link-btn {
+    top: -5.3rem;
+    left: 63.5rem; }
+  .donut,
+  .check {
+    top: 15rem;
+    left: 39.5rem; }
+  #visual-effects-container {
+    position: unset; }
   /*------------------Search----------------------------------------------------------------------*/
   section #search-results-container,
   section #favorites-results-container,
